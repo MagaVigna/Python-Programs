@@ -1,10 +1,10 @@
 total=0
-for student in range(1,4):
-    for subject in range(1,4):
+for student in range(1,4):#outerloop for number of students
+    for subject in range(1,4):#inner loop for number of subjects
         print("Enter the mark of subject ",subject," of student ",student)
         mark = int(input())
         total=total+mark
-        if(mark<=100 and mark>=85):
+        if(mark<=100 and mark>=85):#calculating gpa
             gpa=4
             print("GPA is: ",gpa)
         elif(mark<=84 and mark>=80):
