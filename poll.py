@@ -15,4 +15,4 @@ while(i>=10 ): #loop to continue the next statements till i becomes 10 or number
     if(gender=="Female" and number==1):
         count=count+1
     i=i+1
-print("The percentage of females who prefer online class is:")
+print("The percentage of females who prefer online class is:",count)
