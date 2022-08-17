@@ -10,9 +10,13 @@ total3=(mark1+mark2)/2        #calculaing percentages seperately cause in the pr
 total4=(mark1)/1
 if(total==60):  #printing either pass or fail
     print("Pass")
-elif((total1>=90 or total1>=75) and (total4>=50 or total4>=40)):
+elif(total1>=90  and  total4>=40):
     print("Pass")
-elif((total2>=90 or total2>=75) and (total3>=40 or total3>=50)):
+elif(total1>=75 and total4>=50):
+    print("Pass")
+elif(total2>=90 and total3>=40):
+    print("Pass")
+elif(total2>=75 and total3>=50):
     print("Pass")
 else:
     print("Fail")
