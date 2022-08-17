@@ -15,4 +15,8 @@ while(number_of_students<=10 ): #loop to continue the next statements till i bec
         count=count+1
     number_of_students+=1
 percentage_of_online_females=(count/number_of_students)*100    
+<<<<<<< HEAD
 print("The percentage of females who prefer online class is:",percentage_of_online_females)
+=======
+print("The percentage of females who prefer online class is:",percentage_of_online_females)
+>>>>>>> 2f736ca428d03475d03261ba08d504427776b80c
