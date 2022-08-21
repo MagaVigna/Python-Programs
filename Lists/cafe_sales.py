@@ -1,12 +1,16 @@
-items=["Sandwich","Pizza","Burger","Coffee"]
-price=[100,150,200,50]
-supply=[30,20,40,50]
+items=["Sandwich","Pizza","Burger","Coffee"] #declaring items in the cafe
+price=[100,150,200,50] #declaring the price of the items
+supply=[30,20,40,50]    #declaring the supplies
 sales=[]
 print("Menu")
 for menu in range(0,len(items)):
-    print(items[menu],"-",price[menu])
+    print(items[menu],"-",price[menu]) #printing the menu
 for i in range(0,len(items)):
     print("Enter the number of",items[i],":")
-    sale=int(input())
-    sales.append(sale)
-
+    choice=int(input())
+    sales.append(choice)
+    if(sales[i]<=supply[i]): #checking if the item is available or not
+        total_sales=sales[i]*price[i] #calculating total sales
+    else:
+        print("Out of stock")
+print("Sales of the cafe is:",total_sales)
