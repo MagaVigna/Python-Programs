@@ -16,3 +16,14 @@ for count in range(0,len(fruits)): #calculating and printing the sales
     elif days[count]=="Wednesday":
         sales=((supply[0]*price[0]) + (supply[1]*price[1]) + (supply[2]*price[2]))
         print("Sales of wednesday is:",sales)
+
+'''Output:
+Enter the number of apples :
+100
+Enter the number of orange :
+100
+Enter the number of other_fruits :
+100
+Sales of monday is: 2900.0
+Sales of tuesday is: 4325.0
+Sales of wednesday is: 5000'''

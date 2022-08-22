@@ -14,3 +14,19 @@ for i in range(0,len(items)):
     else:
         print("Out of stock")
 print("Sales of the cafe is:",total_sales)
+
+'''Output:
+Menu
+Sandwich - 100
+Pizza - 150
+Burger - 200
+Coffee - 50
+Enter the number of Sandwich :
+2
+Enter the number of Pizza :
+0
+Enter the number of Burger :
+0
+Enter the number of Coffee :
+1
+Sales of the cafe is: 50'''

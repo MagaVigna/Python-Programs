@@ -13,4 +13,16 @@ for student in range(0,no_of_students):
 total=sum(marks_of_student)
 class_average=total/no_of_students #calculating average
 print("Class average is:",class_average)
+'''Output:
+Enter the total number of students:3
+Enter your name:Maga
+Enter your name:Vigna
+Enter your name:Gokul
+Enter your mark Gokul : 
+100
+Enter your mark Vigna : 
+90
+Enter your mark Maga : 
+80
+Class average is: 90.0'''
     
