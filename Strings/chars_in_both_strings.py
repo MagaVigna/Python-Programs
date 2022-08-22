@@ -5,3 +5,8 @@ for str1 in range(0,len(string1)): #comparing the charecters of the first string
         if string1[str1]==string2[str2]:
             print(string1[str1])
             break
+    
+'''Output:
+Enter an string:Hello
+Enter an string:Hai
+H'''

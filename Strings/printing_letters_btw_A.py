@@ -10,3 +10,8 @@ for number1 in range(temp,len(string1)):    #Printing everything in between till
         break
     print(string1[temp+1])
 
+'''Output:
+Enter a string:DABBBAHH
+B
+B
+B'''
