@@ -10,3 +10,13 @@ for str1 in range(0,len(string1)): #comparing the charecters of the first string
 Enter an string:Hello
 Enter an string:Hai
 H'''
+'''Enter an string:Hello
+Enter an string:How
+H
+o'''
+'''Enter an string:AAAA
+Enter an string:AAAA
+A
+A
+A
+A'''

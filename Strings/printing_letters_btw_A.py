@@ -15,3 +15,9 @@ Enter a string:DABBBAHH
 B
 B
 B'''
+'''Enter a string:ABBA
+B
+B'''
+'''Enter a string:ALLA
+L
+L'''

@@ -38,3 +38,26 @@ Harry Potter
 Inception
 Movies only my friend watched:
 After'''
+
+'''Enter the number of movies you have watched:2
+Enter the movie name:Titanic
+Enter the movie name:Panic Room
+Movies we both watched:
+Titanic
+Movies only I watched:
+Harry Potter
+Twilight
+Inception
+Movies only my friend watched:
+Panic Room'''
+
+'''Enter the number of movies you have watched:1
+Enter the movie name:Up
+Movies we both watched:
+Movies only I watched:
+Titanic
+Harry Potter
+Twilight
+Inception
+Movies only my friend watched:
+Up'''

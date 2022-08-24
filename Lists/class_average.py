@@ -25,4 +25,24 @@ Enter your mark Vigna :
 Enter your mark Maga : 
 80
 Class average is: 90.0'''
+'''Enter the total number of students:3
+Enter your name:Harry
+Enter your name:Louis
+Enter your name:Liam
+Enter your mark Liam : 
+98
+Enter your mark Louis : 
+90
+Enter your mark Harry : 
+99
+Class average is: 95.66666666666667'''
+
+'''Enter the total number of students:2
+Enter your name:Maga
+Enter your name:Vigna
+Enter your mark Vigna : 
+100
+Enter your mark Maga : 
+100
+Class average is: 100.0'''
     

@@ -27,3 +27,23 @@ Enter the number of other_fruits :
 Sales of monday is: 2900.0
 Sales of tuesday is: 4325.0
 Sales of wednesday is: 5000'''
+
+'''Enter the number of apples :
+10
+Enter the number of orange :
+10
+Enter the number of other_fruits :
+10
+Sales of monday is: 200.0
+Sales of tuesday is: 162.5
+Sales of wednesday is: 500'''
+
+'''Enter the number of apples :
+1000
+Enter the number of orange :
+1000
+Enter the number of other_fruits :
+1000
+Sales of monday is: 29900.0
+Sales of tuesday is: 45950.0
+Sales of wednesday is: 50000'''
