@@ -21,9 +21,7 @@ else:
     print("There is no A in the word")
 
 '''Output:
-Enter a string:nbba
-N comes before A'''
-'''Enter a string:abbbaaa
+Enter a string:abbbaaa
 B
 B
 B
