@@ -24,6 +24,8 @@ elif A_flag:
     print("There is no N in the word")
 elif N_flag:
     print("There is no A in the word")
+else:
+    print("There is no A and N")
 
 ''' Output:
 Enter a string:abbbn
@@ -36,3 +38,6 @@ There is no N in the word'''
 
 '''Enter a string:nbba
 N comes before A'''
+
+'''Enter a string:bcde
+There is no A and N'''
