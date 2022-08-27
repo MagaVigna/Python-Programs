@@ -24,3 +24,15 @@ elif A_flag:
     print("There is no N in the word")
 elif N_flag:
     print("There is no A in the word")
+
+''' Output:
+Enter a string:abbbn
+B
+B
+B'''
+
+'''Enter a string:abba
+There is no N in the word'''
+
+'''Enter a string:nbba
+N comes before A'''
