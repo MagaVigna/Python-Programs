@@ -1,7 +1,7 @@
 word1=input("Enter a string:")
 word=word1.upper()
-A_flag=0 #to check if A is present
-N_flag=0 #to check if N is present
+A_flag=0 #to check if A is present in the word
+N_flag=0 #to check if N is present in the word
 for first in range (0,len(word)): #finding first index
     if word[first]=='A':
         first_index=first
