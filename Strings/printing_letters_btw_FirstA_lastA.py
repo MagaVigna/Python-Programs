@@ -1,22 +1,18 @@
 word1=input("Enter a string:")
 word=word1.upper()
+first_index=0
 A1_flag=0 #to check the presence of first A
 A2_flag=0 #to check the presence of last A
 for first in range (0,len(word)-1): #to find the first index
     if word[first]=='A':
         first_index=first
         A1_flag=1
-        print(first_index)
-        word=word.replace('A',' ')
-        print(word[first_index])
         break
 
 for last in reversed(range (0,len(word))): #to find the last index
-    if word[last]=='A':
+    if word[last]=='A' and last!=first_index:
         last_index=last
         A2_flag=1
-        print(last_index)
-            #word.replace('A','')
         break
 
 if A1_flag and A2_flag: #printing letters between first and last index
@@ -30,11 +26,12 @@ else:
     print("There is no A in the word")
 
 '''Output:
-Enter a string:abbbaaa
+Enter a string:abba
 B
-B
-B
-A
-A'''
-'''Enter a string:bbbb
+B'''
+'''Enter a string:bba
+There is no first A in the word'''
+'''Enter a string:abb
+There is no last A in the word'''
+'''Enter a string:bbb
 There is no A in the word'''
