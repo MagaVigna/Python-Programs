@@ -35,3 +35,5 @@ B'''
 There is no second A in the word'''
 '''Enter a string:bba
 There is no first A in the word'''
+''''Enter a string:bbb
+There is no A in the word'''
