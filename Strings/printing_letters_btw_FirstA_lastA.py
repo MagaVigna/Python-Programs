@@ -19,3 +19,15 @@ if A1_flag and A2_flag: #printing letters between first and last index
         print(word[number])
 else:
     print("There is no A in the word")
+
+'''Output:
+Enter a string:nbba
+N comes before A'''
+'''Enter a string:abbbaaa
+B
+B
+B
+A
+A'''
+'''Enter a string:bbbb
+There is no A in the word'''
