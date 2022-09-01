@@ -4,11 +4,13 @@
 
 input_string=input("Enter any string:") #getting the input string from the user
 temp=int(len(input_string)-1)
-for index in range(0,int(len(input_string)/2)):
-    # if index==len(input_string)/2: #stopping the loop if the index value exceeds the half the value of stirng length
-    #     break
-    print(input_string[index],input_string[temp],",") #printing first and last char
-    temp-=1
+half_length=int(len(input_string)/2)
+for index in range(0,half_length):
+        print(input_string[index],input_string[temp],",") #printing first and last char
+        temp-=1
+if(len(input_string)%2==1):
+    print(input_string[half_length])
+        
 '''Output:
 Enter any string:abcd1234 
 a 4 ,
@@ -21,10 +23,13 @@ d 1 ,
 c 2 ,
 b 3 ,
 a 4 ,'''
-'''Enter any string:ab1
-a 1 ,'''
-'''Enter any string:abcde1234
-a 4 ,
-b 3 ,
-c 2 ,
-d 1 ,'''
+'''Enter any string:abcd123
+a 3 ,
+b 2 ,
+c 1 ,
+d'''
+'''Enter any string:abc123
+a 3 ,
+b 2 ,
+c 1 ,'''
+
