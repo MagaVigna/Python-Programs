@@ -5,11 +5,11 @@
 
 input_string=input("Enter any string:") #getting the input string
 print("The charecters in the even indexes:")
-for even_index in range(1,len(input_string),2): #loop to print the values in even indexes
-    print(input_string[even_index])
-print("The charecters in the odd indexes:")
-for odd_index in range(0,len(input_string),2): #loop to print the values in odd indexes
+for odd_index in range(1,len(input_string),2): #loop to print the values in odd indexes
     print(input_string[odd_index])
+print("The charecters in the odd indexes:")
+for even_index in range(0,len(input_string),2): #loop to print the values in even indexes
+    print(input_string[even_index])
 
 '''Outputs:
 Enter any string:abcd
