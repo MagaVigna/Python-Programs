@@ -7,9 +7,8 @@ Print the quantity if the customer says the quantity. If not, ask him how much h
 Hint : Use string manipulation and lists.'''
 
 fruits_quantity_list=[["apple","banana","orange","grapes"],["one","two","three","four","five","six","seven","eight","nine"]]
-for menu in range(0,4):
+for menu in range(0,len(fruits_quantity_list[0])):
     print(menu+1," ",fruits_quantity_list[0][menu]) #printing the menu
-print(fruits_quantity_list[0])
 order=input("What do you wanna buy?") #getting input from user
 fruit_found=0
 quantity_found=0
