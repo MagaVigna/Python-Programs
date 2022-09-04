@@ -6,14 +6,17 @@ eg username : myname@sayur.com. password - mnamesay123 '''
 
 username=input("Enter the username:")
 password=input("Enter the password:")
-new_username=username.split('@')#spilting username after @
-if(new_username[1].__contains__(".")):#spliting username after '.'
-    new_username_1=new_username[1].split('.')
+if(username.__contains__("@")):
+    new_username=username.split('@')#spilting username after @  
+    if(new_username[1].__contains__(".")):#spliting username after '.'
+        new_username_1=new_username[1].split('.')
+    else:
+        print("Username Invalid")
+        exit()
+    if ((new_username_1[1]=="com") or (new_username_1[1]=="tech") or (new_username_1[1]=="edu") or (new_username_1[1]=="org")):#checking if username is valid
+        print("Valid Username")
 else:
-    print("Username Invalid")
-    exit()
-if ((new_username_1[1]=="com") or (new_username_1[1]=="tech") or (new_username_1[1]=="edu") or (new_username_1[1]=="org")):#checking if username is valid
-    print("Valid Username")
+    print("Invalid Username")
 #checking if password is valid
 if((password[0]==username[0] and password[1]==username[2]) and (password[2:5]==new_username[0][len(new_username[0])-3:len(new_username[0])]) and (password[5:8]==new_username_1[0][0:3]) and (password[8:11].isnumeric())):
     print("Valid Password")
@@ -34,3 +37,8 @@ Invalid Password'''
 '''Enter the username:magavigna@gmailcom
 Enter the password:maga
 Username Invalid'''
+'''
+Enter the username:myname
+Enter the password:a 
+Invalid Username
+Invalid Password'''
