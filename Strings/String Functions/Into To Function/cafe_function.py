@@ -37,7 +37,7 @@ def sale():
     print("The supply have been restocked",stock_count,"times")
 def stock():
     for index in range(0,len(supply)):
-        supply[index]+=supply[index]*0.2
+        supply[index]+=supply[index]*0.8
         
 sale()
 
