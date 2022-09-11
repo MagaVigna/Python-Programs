@@ -9,16 +9,17 @@ price=[100,150,200,50] #declaring the price of the items
 supply=[30,20,40,50]    #declaring the supplies
 sales=[] #to store the sales of the day
 #stock_count=0 #to keep track on how many times the supply have been restocked
-def sale():
+def menu():
+        for menu in range(0,len(items)):
+            print(items[menu],"-",price[menu]) #printing the menu
+        
+def sales_func():
     menu_choice='yes'
     stock_count=0 #to keep track on how many times the supply have been restocked
     trans=10 #maximum number of transaction
     total_sales=0
-    
-    while(trans>0 and menu_choice=='yes'):
-        print("Menu")
-        for menu in range(0,len(items)):
-            print(items[menu],"-",price[menu]) #printing the menu
+    while(trans>0 and menu_choice=="yes"):
+        menu()
         for elements in range(0,len(items)):
             print("Enter the number of",items[elements],":")
             choice=int(input())
@@ -29,17 +30,18 @@ def sale():
         for index in range(0,len(supply)):
             if supply[index]<=supply[index]*0.2:
                 stock_count=stock_count+1
-                print("hekko")
-                stock()     
+                restock(supply,sales)     
         trans-=1
         menu_choice=input("Do you want to continue(Type yes):")
+    print("Total number of items sold:",sales)
     print("Sales of the cafe is:",total_sales)
     print("The supply have been restocked",stock_count,"times")
-def stock():
+
+def restock(supply,sales):
     for index in range(0,len(supply)):
-        supply[index]+=supply[index]*0.8
+        sales[index]+=supply[index]
         
-sale()
+sales_func()
 
 
 '''Output:
