@@ -30,7 +30,7 @@ def sales_func():
         for index in range(0,len(supply)):
             if supply[index]<=supply[index]*0.2:
                 stock_count=stock_count+1
-                restock(supply,sales)     
+                restock(supply[index],sales[index])     
         trans-=1
         menu_choice=input("Do you want to continue(Type yes):")
     print("Total number of items sold:",sales)
@@ -38,8 +38,7 @@ def sales_func():
     print("The supply have been restocked",stock_count,"times")
 
 def restock(supply,sales):
-    for index in range(0,len(supply)):
-        sales[index]+=supply[index]
+        sales+=supply
         
 sales_func()
 
