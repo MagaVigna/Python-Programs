@@ -6,7 +6,8 @@ Also print the total numbers of items sold.
 
 items=["Sandwich","Pizza","Burger","Coffee"] #declaring items in the cafe
 price=[100,150,200,50] #declaring the price of the items
-supply=[30,20,40,50]    #declaring the supplies
+supply=[50,50,50,50]   #declaring the supplies
+temp_supply=supply
 sales=[] #to store the sales of the day
 #stock_count=0 #to keep track on how many times the supply have been restocked
 def menu():
@@ -28,7 +29,7 @@ def sales_func():
                 total_sales+=sales[elements]*price[elements]#calculating total sales
                 supply[elements]-=sales[elements]
         for index in range(0,len(supply)):
-            if supply[index]<=supply[index]*0.2:
+            if supply[index]<=sales[index]*0.2: #cheking if sales went down to 20%
                 stock_count=stock_count+1
                 restock(supply[index],sales[index])     
         trans-=1
@@ -38,7 +39,8 @@ def sales_func():
     print("The supply have been restocked",stock_count,"times")
 
 def restock(supply,sales):
-        sales+=supply
+    while supply!=sales:
+        supply+=1
         
 sales_func()
 
@@ -58,6 +60,7 @@ Enter the number of Burger :
 Enter the number of Coffee :
 10
 Do you want to continue(Type yes):no
+Total number of items sold: [10, 10, 10, 10]
 Sales of the cafe is: 6800
 The supply have been restocked 0 times'''
 '''
@@ -67,14 +70,14 @@ Pizza - 150
 Burger - 200
 Coffee - 50
 Enter the number of Sandwich :
-20
+45
 Enter the number of Pizza :
 20
 Enter the number of Burger :
 20
 Enter the number of Coffee :
 20
-hekko
+Total number of items sold: [45, 20, 20, 20]
 Do you want to continue(Type yes):no
 Sales of the cafe is: 10000
 The supply have been restocked 1 times'''
