@@ -58,7 +58,7 @@ if(abs(no_of_days)>=14): #calculating discounts
 if(age>=senior_age):
     total_ticket-=total_ticket*0.1
 
-print("The flight ticket cost is:",total_ticket)
+print("The flight ticket cost is:",total_ticket) #printing ticket costs and number of weekend tickets
 print("Number of weekend tickets sold is: ",number_of_weekend_tickets)
 
 '''
