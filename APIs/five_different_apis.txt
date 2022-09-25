@@ -1,0 +1,19 @@
+1. https://nordigen.com/en/account_information_documenation/integration/quickstart_guide/
+-Connect to bank accounts using official bank APIs and get raw transaction data.
+-Can be used to group expenses by categories to automate bookkeeping processes. 
+
+2. https://apilayer.com/marketplace/tax_data-api
+-Instant VAT number and tax validation across the globe.
+-Can be used to check the validatity of an intracommunity vat number.
+
+3. https://covid-19.dataflowkit.com
+-COVID-19 live statistics into sites per hour.
+-Can be used to depict the next wave.
+
+4. http://www.geonames.org/export/web-services.html
+-Place names and other geographical data.
+-Can be used to identify the target customers.
+
+5. https://unplu.gg/test_api.html
+-Forecasting API for timeseries data.
+-Can be used to identify the future trend in temperature or forecast energy consumption.
