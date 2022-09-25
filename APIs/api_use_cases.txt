@@ -1,0 +1,9 @@
+1. API to show show the real time data about the stock market so that the user can use that to buy a stock.
+
+2. API to show visiting rates of tourists spots, the user can use it to plan their next vacation.
+
+3. API to show the ranks of university, the students can use it to choose their future universitites.
+
+4. API to show the weather predictions, the user can use it plan thier day according to the weather.
+
+5. API to show the fastest growin jobs in a country. User can use it identify a best job and apply for it.
