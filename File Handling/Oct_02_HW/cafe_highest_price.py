@@ -11,6 +11,7 @@ while file_line:
         if index.isnumeric():
             maxlist.append(index)
 print("Maximum price is:",max(maxlist, key=lambda value: int(value)) )
+
 '''
 Output:
 Maximum price is: 200
