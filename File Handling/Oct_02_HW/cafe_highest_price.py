@@ -1,7 +1,6 @@
 
 file=open("C:\\Users\\Maga Vigna\\Desktop\\College\\Sayur\\input_cafe.csv","r") #opening the csv file in reading mode
 file_line=file.readline() #reading single line from the file
-maxprice=0
 maxlist=[]
 while file_line:
     linelist=file_line.split(",") #converting the line into list
@@ -11,9 +10,7 @@ while file_line:
     for index in pricelist: #storing only the numeric values
         if index.isnumeric():
             maxlist.append(index)
-maxprice=max(maxlist)
-print("Maximum price is:",maxprice)
-
+print("Maximum price is:",max(maxlist, key=lambda value: int(value)) )
 '''
 Output:
 Maximum price is: 200
