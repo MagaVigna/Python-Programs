@@ -11,9 +11,7 @@ while file_line:
     for index in pricelist: #storing only the numeric values
         if index.isnumeric():
             maxlist.append(index)
-for max_value in maxlist: #finding the maximum value
-    if int(max_value) > int(maxprice):
-        maxprice=max_value
+maxprice=max(maxlist)
 print("Maximum price is:",maxprice)
 
 '''
