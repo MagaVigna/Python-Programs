@@ -6,7 +6,7 @@ Start with 3 letter word. If user guesses the word correctly, then 4 letters and
 
 three_letter_word="dot" #declaring the words that to should be guessed by the user
 four_letter_word="play"
-five_letter_word="Sayur"
+five_letter_word="sayur"
 
 
 def get_input(): #function to get the input from the user
@@ -26,7 +26,7 @@ def wordle_function(word):
         if built_in_word[index]==input_word[index]: #if letter founf in the given string printing G
             print(input_word[index],"- G")
             found_letter.append(input_word[index])#found at the wrond position printing Y
-        elif built_in_word[index] in input_word:
+        elif input_word[index] in built_in_word:
             print(input_word[index],"- Y")
         else:   #not found at all printing B
             print(input_word[index],"- B")
