@@ -9,29 +9,26 @@ while file_line:
     itemlist=item_column.split("\n")
     for index in itemlist: #storing only the numeric values
         items.append(index)
-    print(items)
     if "Item_name" in items:
         items.remove("Item_name")
     supply_column=linelist[1]
     supply_list=supply_column.split("\n")
     for index in supply_list: #storing only the numeric values
         if index.isnumeric():
-            supply.append(index)
+            supply.append(int(index))
     price_column=linelist[2] #seperating and storing the values from the selling_price column
     pricelist=price_column.split("\n") #converting the values into list
     for index in pricelist: #storing only the numeric values
         if index.isnumeric():
             price.append(index)
     file_line=file.readline()
-print(item_column)
-print(supply)
-print(price)
 temp_supply=supply
 sales=[] #to store the sales of the day
 stock_count=0 #to keep track on how many times the supply have been restocked
 def menu():
-        for menu in range(0,len(items)):
-            print(items[menu],"-",price[menu]) #printing the menu
+    print("----------Menu------------")
+    for menu in range(0,len(items)):
+        print(items[menu],"-",price[menu]) #printing the menu
         
 def sales_func():
     menu_choice='yes'
@@ -40,12 +37,12 @@ def sales_func():
     total_sales=0
     while(trans>0 and menu_choice=="yes"):
         menu()
-        for elements in range(0,len(items)):
+        for elements in range(0,len(supply)):
             print("Enter the number of",items[elements],":")
             choice=int(input())
             sales.append(choice)
             if(int(sales[elements])<=int(supply[elements]) and choice!=0): #checking if the item is available or not
-                total_sales+=sales[elements]*int(pricelist[elements])#calculating total sales
+                total_sales+=sales[elements]*int(price[elements])#calculating total sales
                 supply[elements]-=sales[elements]
         for index in range(0,len(supply)):
             if (int(supply[index])<=int(sales[index]*0.2)): #cheking if sales went down to 20%
@@ -62,3 +59,30 @@ def restock(supply,sales):
         supply+=1
         
 sales_func()
+
+'''
+Output:
+----------Menu------------
+Vadai - 100
+Pizza - 100
+Coke - 50
+Burger - 150
+Sandwich - 80
+Briyani - 200
+Enter the number of Vadai :
+10
+Enter the number of Pizza :
+10
+Enter the number of Coke :
+10
+Enter the number of Burger :
+10
+Enter the number of Sandwich :
+10
+Enter the number of Briyani :
+10
+Do you want to continue(Type yes):no
+Total number of items sold: [10, 10, 10, 10, 10, 10]
+Sales of the cafe is: 6800
+The supply have been restocked 0 times
+'''
