@@ -1,30 +1,45 @@
-file=open("C:\\Users\\Maga Vigna\\Desktop\\College\\Sayur\\input_cafe.csv","r") #opening the csv file in reading mode
-file_line=file.readline() #reading single line from the file
-supply=[]
+import csv
+supply=[] #initialising necessary variables
 price=[]
 items=[]
-while file_line:
-    linelist=file_line.split(",") #converting the line into list
-    item_column=linelist[0]
-    itemlist=item_column.split("\n")
-    for index in itemlist: #storing only the numeric values
-        items.append(index)
-    if "Item_name" in items:
-        items.remove("Item_name")
-    supply_column=linelist[1]
-    supply_list=supply_column.split("\n")
-    for index in supply_list: #storing only the numeric values
-        if index.isnumeric():
-            supply.append(int(index))
-    price_column=linelist[2] #seperating and storing the values from the selling_price column
-    pricelist=price_column.split("\n") #converting the values into list
-    for index in pricelist: #storing only the numeric values
-        if index.isnumeric():
-            price.append(index)
-    file_line=file.readline()
+menu_var=[]
 temp_supply=supply
 sales=[] #to store the sales of the day
 stock_count=0 #to keep track on how many times the supply have been restocked
+
+def reading_data_from_file():
+    file=open("C:\\Users\\Maga Vigna\\Desktop\\College\\Sayur\\input_cafe.csv","r") #opening the csv file in reading mode
+    csv_reader=csv.reader(file)
+    item_index=0
+    supply_index=1
+    price_index=2
+    next(csv_reader)
+    for line in csv_reader:
+        menu_var.append(line)
+    for index in range(0,len(menu_var[0])):
+        items.append(menu_var[index][item_index])
+        supply.append(int(menu_var[index][supply_index]))
+        price.append(menu_var[index][price_index])
+    print(items)
+    print(supply)
+    print(price)
+    file.close()
+
+def writing_data_into_file():
+    with open("C:\\Users\\Maga Vigna\\Desktop\\College\\Sayur\\Output_cafe.csv", "w",encoding='UTF8', newline='') as csv_file: #opening file in write mode
+        writer = csv.writer(csv_file, delimiter=',')
+        writer.writerow(['Items_name', 'Sales']) #writing the header data
+        for index in range(0, len(items)):
+            writer.writerow([items[index],sales[index]]) #writing the values
+    csv_file.close()
+
+def printing_data_from_output_file():
+    with open("C:\\Users\\Maga Vigna\\Desktop\\College\\Sayur\\Output_cafe.csv", "r",encoding='UTF8', newline='') as csv_file:
+        csvFile = csv.reader(csv_file) 
+        for lines in csvFile: 
+            print(lines) 
+    csv_file.close()
+
 def menu():
     print("----------Menu------------")
     for menu in range(0,len(items)):
@@ -50,15 +65,19 @@ def sales_func():
                 restock(supply[index],sales[index])     
         trans-=1
         menu_choice=input("Do you want to continue(Type yes):")
-    print("Total number of items sold:",sales)
-    print("Sales of the cafe is:",total_sales)
     print("The supply have been restocked",stock_count,"times")
 
 def restock(supply,sales):
     while supply!=sales:
         supply+=1
-        
+
+reading_data_from_file()
+
 sales_func()
+
+writing_data_into_file()
+
+printing_data_from_output_file()
 
 '''
 Output:
