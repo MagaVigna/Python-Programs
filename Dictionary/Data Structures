@@ -1,0 +1,9 @@
+Data structures are generally used to organise data. 
+In python we use four types of data structures, list, dictionary, tuples and sets. 
+Categorising similar data and referencing them under same name is called as data structures. 
+Like in list we can group elements of different data type and call it with a single name. 
+Tuples are same like lists but they are immutable that is their values cannot be changed once they are declared and values have been initiated. 
+In python all four data structures are one dimensional. 
+They are stored in a single row or column continuously. 
+In Dictionary we can store the values in key:value format. 
+Whereas set is a keyless dictionary and the values are always stored in ascending order.
