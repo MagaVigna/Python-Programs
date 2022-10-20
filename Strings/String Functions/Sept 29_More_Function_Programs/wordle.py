@@ -6,7 +6,7 @@ Start with 3 letter word. If user guesses the word correctly, then 4 letters and
 
 three_letter_word="dot" #declaring the words that to should be guessed by the user
 four_letter_word="play"
-five_letter_word="sayur"
+five_letter_word="excel"
 
 
 def get_input(): #function to get the input from the user
