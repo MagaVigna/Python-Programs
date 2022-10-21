@@ -7,45 +7,48 @@ built_in_word_3=["s","a","y","u","r"]
 def get_input(): #function to get the input from the user
     global input_word
     input_word_as_string=input("Enter the word:")
-    input_word=list(input_word_as_string)
+    input_word=list(input_word_as_string) #converting the string into a list of charecters
 
-def fixing_the_built_in_word(word):
+def fixing_the_built_in_word(word):#declaring the words for the user to guess according to the length
     for index in range (0,len(word)):
-        if len(word)==3: #declaring the words according to the length
+        if len(word)==3: #if the length of word is three then the word user has to guess is fixed with the same length word
             built_in_word.append(built_in_word_1[index])
-        elif len(word)==4:
+        elif len(word)==4: #if the length of word is four then the word user has to guess is fixed with the four length word
             built_in_word.append(built_in_word_2[index])
-        elif len(word)==5:
+        elif len(word)==5: #if the length of word is five then the word user has to guess is fixed with the five length word
             built_in_word.append(built_in_word_3[index])
 
-def check_word(word):
+def check_word(word): #checking if the user entered word is correct or wrong
     global found_letter
-    found_letter=[]
+    found_letter=[] #a list to store the charecters that occur both in user input word and the built in word
     for index in range (0,len(word)): #to manipulate the string
         if built_in_word[index]==word[index]: #if letter found in the given string printing G
             print(word[index],"- G")
             found_letter.append(word[index])#found at the wrond position printing Y
-        elif word[index] in built_in_word:
+        elif word[index] in built_in_word and word.count(word[index])==1:
             print(word[index],"- Y")
-        else:   #not found at all printing B
-            print(word[index],"- B")
+        else:   #not found at all printing R
+            print(word[index],"- R")
 
 def wordle_main():
     global next_round
     next_round=1
     level=3
-    if next_round==1:
-        while level<=5:
+    if next_round==1: #checking if the user passes the round to move on to the next round
+        while level<=5: #to play levels from three to five
             for attempt in range (0,5):
                 print("-----Guess the", level , "letter word------")
-                get_input()
-                fixing_the_built_in_word(input_word)
-                check_word(input_word)
-                if input_word==found_letter:
+                get_input() #getting the input
+                fixing_the_built_in_word(input_word) #deciding the word to be guessed by the user
+                check_word(input_word) #checking the word
+                if input_word==found_letter: 
                     next_round=0
                     level=level+1
                     built_in_word.clear()
                     break
+                if attempt==4:
+                    level=6
+
         
 wordle_main()
 
@@ -56,12 +59,6 @@ Enter the word:dot
 d - G
 o - G
 t - G
------Guess the 4 letter word------
-Enter the word:well
-w - G
-e - B
-l - G
-l - Y
 -----Guess the 4 letter word------
 Enter the word:walk
 w - G
@@ -75,4 +72,66 @@ a - G
 y - G
 u - G
 r - G
+'''
+'''
+-----Guess the 3 letter word------
+Enter the word:ooo
+o - R
+o - G
+o - R
+-----Guess the 3 letter word------
+Enter the word:ddd
+d - G
+d - R
+d - R
+-----Guess the 3 letter word------
+Enter the word:ttt
+t - R
+t - R
+t - G
+-----Guess the 3 letter word------
+Enter the word:dot
+d - G
+o - G
+t - G
+-----Guess the 4 letter word------
+Enter the word:walk
+w - G
+a - G
+l - G
+k - G
+-----Guess the 5 letter word------
+Enter the word:sayur
+s - G
+a - G
+y - G
+u - G
+r - G
+'''
+'''
+-----Guess the 3 letter word------
+Enter the word:ooo
+o - R
+o - G
+o - R
+-----Guess the 3 letter word------
+Enter the word:lll
+l - R
+l - R
+l - R
+-----Guess the 3 letter word------
+Enter the word:kkk
+k - R
+k - R
+k - R
+-----Guess the 3 letter word------
+Enter the word:mmm
+m - R
+m - R
+m - R
+-----Guess the 3 letter word------
+Enter the word:nnn
+n - R
+n - R
+n - R
 '''
