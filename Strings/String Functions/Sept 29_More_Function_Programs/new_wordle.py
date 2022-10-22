@@ -10,13 +10,13 @@ def get_input(): #function to get the input from the user
     input_word=list(input_word_as_string) #converting the string into a list of charecters
 
 def fixing_the_built_in_word(word):#declaring the words for the user to guess according to the length
-    for index in range (0,len(word)):
-        if len(word)==3: #if the length of word is three then the word user has to guess is fixed with the same length word
-            built_in_word.append(built_in_word_1[index])
-        elif len(word)==4: #if the length of word is four then the word user has to guess is fixed with the four length word
-            built_in_word.append(built_in_word_2[index])
-        elif len(word)==5: #if the length of word is five then the word user has to guess is fixed with the five length word
-            built_in_word.append(built_in_word_3[index])
+    global built_in_word
+    if len(word)==3: #if the length of word is three then the word user has to guess is fixed with the same length word
+        built_in_word=built_in_word_1.copy()
+    elif len(word)==4: #if the length of word is four then the word user has to guess is fixed with the four length word
+        built_in_word=built_in_word_2.copy()
+    elif len(word)==5: #if the length of word is five then the word user has to guess is fixed with the five length word
+        built_in_word=built_in_word_3.copy()
 
 def check_word(word): #checking if the user entered word is correct or wrong
     global found_letter
@@ -39,6 +39,9 @@ def wordle_main():
             for attempt in range (0,5):
                 print("-----Guess the", level , "letter word------")
                 get_input() #getting the input
+                if level!=len(input_word):
+                    print("Please enter a",level,"letter word")
+                    break
                 fixing_the_built_in_word(input_word) #deciding the word to be guessed by the user
                 check_word(input_word) #checking the word
                 if input_word==found_letter: 
