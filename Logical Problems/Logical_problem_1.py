@@ -26,12 +26,13 @@ def fixing_row_col(): #function to declare the row and column player 1 and 2 acc
         player1_col=random.randint(0,5) #player 1 column
         printing_the_row_col(player1_row,player1_col) #printing player 1 row and column values
         board[player1_row][player1_col]=1 #changing the player1_row x player1_col value to 1 
+        printing_the_board() #printing the contents in the board
         print("Player two chance to roll the dice") #player 2 rolling the dice
         player2_row=random.randint(0,5) #player 2 row
         player2_col=random.randint(0,5) #player 2 column
         printing_the_row_col(player2_row,player2_col) #printing player 2 row and column values
-        printing_the_board() #printing the contents in the board
         board[player2_row][player2_col]=2 #changing the player2_row x player2_col value to 2
+        printing_the_board() #printing the contents in the board
         declaring_points(player1_row,player1_col,turns) #function to decide player 1 points
         turns=turns+1
         declaring_points(player2_row,player2_col,turns) #function to decide player 2 points
@@ -72,191 +73,113 @@ print("Points scored by player 2 is:",player2_points)
 '''
 Output:
 Player one chance to roll the dice
+The row value player got is: 3
+The column value the player got is: 2
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 1 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+Player two chance to roll the dice
 The row value player got is: 4
 The column value the player got is: 3
-Player two chance to roll the dice
-The row value player got is: 6
-The column value the player got is: 3
 0 0 0 0 0 0
 0 0 0 0 0 0
-0 0 0 0 0 0
-0 0 1 0 0 0
-0 0 0 0 0 0
-0 0 0 0 0 0
-Player one chance to roll the dice
-The row value player got is: 1
-The column value the player got is: 5
-Player two chance to roll the dice
-The row value player got is: 6
-The column value the player got is: 2
-0 0 0 0 1 0
-0 0 0 0 0 0
-0 0 0 0 0 0
-0 0 1 0 0 0
-0 0 0 0 0 0
+0 1 0 0 0 0
 0 0 2 0 0 0
-Player one chance to roll the dice
-The row value player got is: 5
-The column value the player got is: 5
-Player two chance to roll the dice
-The row value player got is: 4
-The column value the player got is: 5
-0 0 0 0 1 0
 0 0 0 0 0 0
 0 0 0 0 0 0
-0 0 1 0 0 0
-0 0 0 0 1 0
-0 2 2 0 0 0
-Player one chance to roll the dice
-The row value player got is: 6
-The column value the player got is: 2
-Player two chance to roll the dice
-The row value player got is: 3
-The column value the player got is: 2
-0 0 0 0 1 0
-0 0 0 0 0 0
-0 0 0 0 0 0
-0 0 1 0 2 0
-0 0 0 0 1 0
-0 1 2 0 0 0
-Player one chance to roll the dice
-The row value player got is: 2
-The column value the player got is: 5
-Player two chance to roll the dice
-The row value player got is: 5
-The column value the player got is: 2
-0 0 0 0 1 0
-0 0 0 0 1 0
-0 2 0 0 0 0
-0 0 1 0 2 0
-0 0 0 0 1 0
-0 1 2 0 0 0
 Player one chance to roll the dice
 The row value player got is: 3
-The column value the player got is: 6
-Player two chance to roll the dice
-The row value player got is: 4
-The column value the player got is: 1
-0 0 0 0 1 0
-0 0 0 0 1 0
-0 2 0 0 0 1
-0 0 1 0 2 0
-0 2 0 0 1 0
-0 1 2 0 0 0
-Player one chance to roll the dice
-The row value player got is: 1
-The column value the player got is: 3
-Player two chance to roll the dice
-The row value player got is: 1
-The column value the player got is: 1
-0 0 1 0 1 0
-0 0 0 0 1 0
-0 2 0 0 0 1
-2 0 1 0 2 0
-0 2 0 0 1 0
-0 1 2 0 0 0
-Points scored by player 1 is: 3
-Points scored by player 2 is: 5
-'''
-
-'''
-Output:
-Player one chance to roll the dice
-The row value player got is: 6
-The column value the player got is: 6
-Player two chance to roll the dice
-The row value player got is: 1
-The column value the player got is: 5
-0 0 0 0 0 0
-0 0 0 0 0 0
-0 0 0 0 0 0
-0 0 0 0 0 0
-0 0 0 0 0 0
-0 0 0 0 0 1
-Player one chance to roll the dice
-The row value player got is: 1
 The column value the player got is: 4
-Player two chance to roll the dice
-The row value player got is: 4
-The column value the player got is: 5
-0 0 0 1 2 0
 0 0 0 0 0 0
 0 0 0 0 0 0
+0 1 0 1 0 0
+0 0 2 0 0 0
 0 0 0 0 0 0
 0 0 0 0 0 0
-0 0 0 0 0 1
-Player one chance to roll the dice
-The row value player got is: 6
-The column value the player got is: 2
 Player two chance to roll the dice
 The row value player got is: 3
+The column value the player got is: 6
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 1 0 1 0 2
+0 0 2 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+Player one chance to roll the dice
+The row value player got is: 3
 The column value the player got is: 1
-0 0 0 1 2 0
 0 0 0 0 0 0
 0 0 0 0 0 0
-0 0 0 0 2 0
+1 1 0 1 0 2
+0 0 2 0 0 0
 0 0 0 0 0 0
-0 1 0 0 0 1
-Player one chance to roll the dice
-The row value player got is: 1
-The column value the player got is: 5
-Player two chance to roll the dice
-The row value player got is: 4
-The column value the player got is: 2
-0 0 0 1 1 0
 0 0 0 0 0 0
-2 0 0 0 0 0
-0 0 0 0 2 0
-0 0 0 0 0 0
-0 1 0 0 0 1
-Player one chance to roll the dice
-The row value player got is: 1
-The column value the player got is: 5
-Player two chance to roll the dice
-The row value player got is: 6
-The column value the player got is: 1
-0 0 0 1 1 0
-0 0 0 0 0 0
-2 0 0 0 0 0
-0 2 0 0 2 0
-0 0 0 0 0 0
-0 1 0 0 0 1
-Player one chance to roll the dice
-The row value player got is: 5
-The column value the player got is: 5
-Player two chance to roll the dice
-The row value player got is: 1
-The column value the player got is: 1
-0 0 0 1 1 0
-0 0 0 0 0 0
-2 0 0 0 0 0
-0 2 0 0 2 0
-0 0 0 0 1 0
-2 1 0 0 0 1
-Player one chance to roll the dice
-The row value player got is: 6
-The column value the player got is: 5
-Player two chance to roll the dice
-The row value player got is: 4
-The column value the player got is: 3
-2 0 0 1 1 0
-0 0 0 0 0 0
-2 0 0 0 0 0
-0 2 0 0 2 0
-0 0 0 0 1 0
-2 1 0 0 1 1
-Player one chance to roll the dice
-The row value player got is: 5
-The column value the player got is: 3
 Player two chance to roll the dice
 The row value player got is: 3
 The column value the player got is: 5
-2 0 0 1 1 0
+0 0 0 0 0 0 
 0 0 0 0 0 0
-2 0 0 0 0 0
-0 2 2 0 2 0
-0 0 1 0 1 0
-2 1 0 0 1 1
+1 1 0 1 2 2
+0 0 2 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+Player one chance to roll the dice
+The row value player got is: 3
+The column value the player got is: 5
+0 0 0 0 0 0
+0 0 0 0 0 0
+1 1 0 1 1 2
+0 0 2 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+Player two chance to roll the dice
+The row value player got is: 5
+The column value the player got is: 6
+0 0 0 0 0 0
+0 0 0 0 0 0
+1 1 0 1 1 2
+0 0 2 0 0 0
+0 0 0 0 0 2
+0 0 0 0 0 0
+Player one chance to roll the dice
+The row value player got is: 6
+The column value the player got is: 4
+0 0 0 0 0 0
+0 0 0 0 0 0
+1 1 0 1 1 2
+0 0 2 0 0 0
+0 0 0 0 0 2
+0 0 0 1 0 0
+Player two chance to roll the dice
+The row value player got is: 5
+The column value the player got is: 6
+0 0 0 0 0 0
+0 0 0 0 0 0
+1 1 0 1 1 2
+0 0 2 0 0 0
+0 0 0 0 0 2
+0 0 0 1 0 0
+Player one chance to roll the dice
+The row value player got is: 5
+The column value the player got is: 4
+0 0 0 0 0 0
+0 0 0 0 0 0
+1 1 0 1 1 2
+0 0 2 0 0 0
+0 0 0 1 0 2
+0 0 0 1 0 0
+Player two chance to roll the dice
+The row value player got is: 2
+The column value the player got is: 4
+0 0 0 0 0 0
+0 0 0 2 0 0
+1 1 0 1 1 2
+0 0 2 0 0 0
+0 0 0 1 0 2
+0 0 0 1 0 0
 Points scored by player 1 is: 5
-Points scored by player 2 is: 5
+Points scored by player 2 is: 3
 '''
