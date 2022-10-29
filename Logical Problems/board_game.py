@@ -38,7 +38,6 @@ def fixing_row_col(): #function to declare the row and column player 1 and 2 acc
         declaring_points(player2_row,player2_col,turns) #function to decide player 2 points
         turns=turns+1
         
-
 def printing_the_row_col(row,col): #function to print the row and column the player got while rolling the dice
     print("The row value player got is:",row+1)
     print("The column value the player got is:",col+1)
