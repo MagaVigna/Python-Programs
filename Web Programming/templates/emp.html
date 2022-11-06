@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <title>Employee Details</title>
+        <style>
+            h1 {
+                font-family: 'Lucida Sans';
+            }
+        </style>
+        <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+        <script>
+            $(document).ready(function(){
+            $("#btnGetEmployee").click(function(e){
+                var salutation=$("#salutation").val();
+                var firstname = $("#firstname").val();
+                var secondname = $("#secondname").val();
+                var phno=$("#phno").val();
+                var occupation=$("#occupation").val();
+                var emp_url = 'http://127.0.0.1:5000/employee/'+salutation+'/'+firstname+'/'+secondname+'/'+phno+'/'+occupation+'/';
+                $.ajax(
+                {
+                    url: emp_url,
+                    success: function(emp){
+                        debugger;
+                        var final='Hello '+emp.Salutation+'. '+emp.Firstname+' '+emp.Lastname+'! '+'Your occupation is '+emp.Occupation+'. Your phone number is '+emp.phoneno;
+                        $("#lblEmployeeInfo").text(final);
+                    },
+                    error: function(error_msg){
+                        debugger;
+                        $("#lblEmployeeInfo").text(error_msg.responseText);
+                    }
+                }                
+                );
+            });
+            });  
+        </script>
+    </head>
+    <body>
+        <div style="text-align:center">
+        <h3>Employee Details</h3>
+        <input id="salutation" type="text" placeholder="Enter the salutation:">
+    </br></br>
+        <input id="firstname" type="text" placeholder="Enter the first name:">
+    </br></br>
+        <input id="secondname" type="text" placeholder="Enter the secondname:">
+    </br></br>
+        <input id="phno" type="text" placeholder="Enter the phone number:">
+    </br></br>
+        <input id="occupation" type="text" placeholder="Enter the occupation:">
+    </br></br>
+        <button id="btnGetEmployee">Get an employee</button>
+    </br></br>
+        <label id="lblEmployeeInfo"></label>
+    </body>
+</html>

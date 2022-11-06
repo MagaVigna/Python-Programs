@@ -1,0 +1,83 @@
+<html>
+    <head>
+        <title>Calculator</title>
+        <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("#btnadd").click(function(e){
+                var firstnum = $("#firstnum").val();
+                var secondnum = $("#secondnum").val();
+                var calc_url = 'http://127.0.0.1:5000/add/' + firstnum +'/' +secondnum ;
+                $.ajax({
+                    url: calc_url,
+                    success: function(r){
+                        $("#lblResult").text(r);
+                    },
+                    error: function(r){
+                        $("#lblResult").text('Invalid number');
+                    }
+                });
+            });
+                $("#btnsub").click(function(e){
+                var firstnum = $("#firstnum").val();
+                var secondnum = $("#secondnum").val();
+                var calc_url = 'http://127.0.0.1:5000/sub/' + firstnum +'/' +secondnum ;
+                $.ajax({
+                    url: calc_url,
+                    success: function(r){
+                        $("#lblResult").text(r);
+                    },
+                    error: function(r){
+                        $("#lblResult").text('Invalid number');
+                    }
+                });
+            });
+                $("#btnmul").click(function(e){
+                var firstnum = $("#firstnum").val();
+                var secondnum = $("#secondnum").val();
+                var calc_url = 'http://127.0.0.1:5000/mul/' + firstnum +'/' +secondnum ;
+                $.ajax({
+                    url: calc_url,
+                    success: function(r){
+                        $("#lblResult").text(r);
+                    },
+                    error: function(r){
+                        $("#lblResult").text('Invalid number');
+                    }
+                });
+            });
+                $("#btndiv").click(function(e){
+                var firstnum = $("#firstnum").val();
+                var secondnum = $("#secondnum").val();
+                var calc_url = 'http://127.0.0.1:5000/div/' + firstnum +'/' +secondnum ;
+                $.ajax({
+                    url: calc_url,
+                    success: function(r){
+                        $("#lblResult").text(r);
+                    },
+                    error: function(r){
+                        $("#lblResult").text('Invalid number');
+                    }
+                });
+            });
+            });
+        </script>
+    </head>
+    <body>
+        <div style="text-align:center">
+        <h3>CALCULATOR</h3>
+        <input id="firstnum" type="text" placeholder="Enter a number">
+        <input id="secondnum" type="text" placeholder="Enter a number">
+    </br></br>
+        <button id="btnadd">ADD</button>
+        <button id="btnsub">SUB</button>
+    </br></br>
+        <button id="btnmul">MUL</button>
+        <button id="btndiv">DIV</button>
+    </br></br>
+        <label id="lblResult"></label>
+    </div>
+    </body>
+</html>
+
+
