@@ -3,7 +3,7 @@ from flask import Flask, render_template
 app = Flask(__name__)
 
 @app.route('/emp_details')
-def calculator():
+def emp_temp():
     return render_template('emp.html')
 
 @app.route('/employee/<string:salutation>/<string:firstname>/<string:lastname>/<int:phno>/<string:occupation>/')
