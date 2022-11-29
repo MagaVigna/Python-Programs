@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>Diet Application</title>
+        <script src="https://code.jquery.com/jquery-3.6.1.js"> </script>
+        <script>  
+            $(document).ready(function(){
+                    $.ajax({
+                        url: "\foodtype",
+                        success:function(data){
+                            var detail = '<option value="-1">Please Select a food type</option>';
+                            for (var i = 0; i < data.length; i++){
+                            detail+='<option value="'+data[i].id+'">'+data[i].foodtype + '</option>';
+                            }
+                            $("#foodtypeDropdown").html(detail);
+                        },
+                        error: function(r){
+                        $("#foodtypeDropdown").html("Error occured in get");
+                    }
+                    });
+            });
+    </script>
+    </head>
+    <body>
+        <form id="myForm">
+            <label for="foodtypeDropdown"><b>Food Type</b></label>
+            <select class="form-control" id="foodtypeDropdown" name="foodtypeDropdown"></select>
+        </form>
+    </body>
+</html>
