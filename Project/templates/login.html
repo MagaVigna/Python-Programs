@@ -1,0 +1,103 @@
+<html>
+    <head>
+        <title>Diet Application</title>
+        <script src="https://code.jquery.com/jquery-3.6.1.js"> </script>
+        <script>  
+            $(document).ready(function(){
+                $("#btnsubmit").click(function(e)
+                {
+                    var username =$("#txtusername").val();
+                    var password=$("#txtpassword").val();
+                    var user ={"username": username,"password":password};
+                    var login_url="/submitinlogin";
+                    $.ajax(
+                    {
+                        url:login_url,
+                        success:function(r)
+                        {
+                            for (var index in r)
+                            {
+                                if (r[index][0]==username && r[index][1]==password)
+                                    window.open("/calorie")
+
+                            }
+                            $("#lblstatus").text(r);
+                        },
+                        error: function(r)
+                        {
+                            $("#lblstatus").text("Error occured");
+                        }
+                    });
+                }); 
+        });
+    </script>
+    <style>
+        div 
+        {
+          margin-bottom: 10px;
+        }
+        label 
+        {
+            display: inline-block;
+            width: 110px;
+            color: #212121;
+        }
+        input 
+        {
+            padding: 5px 10px;
+        }
+        body
+        {
+            background-image:url("https://img.freepik.com/free-photo/oatmeal-dryfruits-with-bird-paradise-flower-white-background_23-2147906999.jpg?w=1380&t=st=1670158118~exp=1670158718~hmac=da90791e1f24f339815df1464ad57a90f46a4ec6e81ad9c086b375b767b01b7a");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+        button
+        {  
+            text-align: center;
+            background-color: rgb(7, 103, 7); 
+            color: rgb(232, 226, 226); 
+            padding: 14px 20px; 
+            margin: 8px 0; 
+            border: none; 
+            border-radius: 4px;
+
+        }  
+        input
+        {
+            width: 100%; 
+            padding: 12px 20px; 
+            margin: 8px 0; 
+            box-sizing: border-box; 
+            border: 1px solid black; 
+            border-radius: 4px;
+        } 
+        form
+        {
+            margin: 0 auto; 
+            width: 30%; 
+            padding: 20px; 
+            border: 2px solid rgb(47, 46, 46); 
+            background-color: rgb(243, 242, 242);
+            border-radius: 10px;
+        }
+        label
+        {
+            font-weight: bold;
+        }
+      </style>
+    </head>
+    <body >
+        <h2 style="text-align: center;">Login</h2>
+        <form>
+            <label id="lblusername">Username</label><br>
+          <input type="text" id="txtusername" name="username"><br>
+          <label id="lblpassword">Password</label><br>
+          <input type="password" id="txtpassword" name="password"><br><br>
+        </form> 
+        <div style="text-align:center">
+        <button id="btnsubmit">Submit</button>
+        </div>
+      </body>
+</html>

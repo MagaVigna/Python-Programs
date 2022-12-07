@@ -1,0 +1,131 @@
+<html>
+    <head>
+        <title>Diet Application</title>
+        <script src="https://code.jquery.com/jquery-3.6.1.js"> </script>
+        <!-- include jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+        <!-- Include Bootstrap Datepicker component -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>  
+        <script>  
+            $(document).ready(function(){
+                $("#btnsubmit").click(function(e)
+                {   var name=$("#txtname").val();
+                    var age=$("#txtage").val();
+                    var weight=$("#txtweight").val();
+                    var height=$("#txtheight").val();
+                    var gender=$("input[type='radio'][name='gender']:checked").val();
+                    var username =$("#txtusername").val();
+                    var password=$("#txtpassword").val();
+                    var dob=$( "#datepicker" ).datepicker({ dateFormat: 'dd-mm-yy' }).val();
+                    var user ={"name":name,"age":age,"weight":weight,"height":height,"gender":gender,"username": username,"password":password,"dob":dob};
+                    var signup_url="/submituserdetails";
+                    $.ajax(
+                    {
+                        url:signup_url,
+                        data:user,
+                        type:"POST",
+                        success:function(r)
+                        {
+                            alert("Signned Up successfully!!! Click the login but to continue to the app!!!");
+                        },
+                        error: function(r)
+                        {
+                            alert("Error Occured!!! Please try again!!!");
+                        }
+                    });
+                }); 
+        });
+    </script>
+    <style>
+        .signup-form 
+        {
+            width: 300px;
+            background-color: #ffffff;
+            padding: 20px;
+            margin: auto;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        .signup-form h3
+        {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .signup-form label 
+        {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .signup-form input[type="text"],
+        .signup-form input[type="password"] 
+        {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        button
+        {
+            text-align: center;
+            background-color: rgb(13, 90, 138); 
+            color: white; 
+            padding: 14px 20px; 
+            margin: 8px 0; 
+            border: none; 
+            border-radius: 4px;
+        }
+        .cta-button
+        {
+            text-align: center;
+            background-color: rgb(13, 90, 138); 
+            color: white; 
+            padding: 14px 20px; 
+            margin: 8px 0; 
+            border: none; 
+            border-radius: 4px;
+        }
+        body
+        {
+            background-image:url("https://img.freepik.com/premium-photo/flat-lay-vegetables-white-background-food-diet-concept_169016-20423.jpg?w=2000");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+      </style>
+    
+    </head>
+    <body>
+        <div class="signup-form">
+        <h3>Sign Up</h3>
+        <form>
+        <label id="lblname">Name</label>
+        <input type="text" id="txtname" ></input>
+        <br/><br/>
+        <label id="lblage">Age</label>
+        <input type="text" id="txtage"></input>
+        <br/><br/>
+        <label id="lblweight">Weight(in kgs)</label>
+        <input type="text" id="txtweight"></input>
+        <br/><br/>
+        <label id="lblheight">Height (in cm)</label>
+        <input type="text" id="txtheight"></input>
+        <br/><br/>
+        <label for="datepicker">Date of Birth</label>
+        <input type="date" id="datepicker" name="datepicker">
+        <br/><br/>
+        <label id="lblgender">Gender</label>
+        <input type="radio" id="gender" name="gender" value="male"/> Male 
+        <input type="radio" id="gender" name="gender" value="female"/> Female 
+        <br/><br/>
+        <label id="lblusername">Username</label>
+        <input type="text" id="txtusername"></input>
+        <br/><br/>
+        <label id="lblpassword">Password</label>
+        <input type="password" id="txtpassword"></input>
+        <br/><br/>
+    </form> 
+    </div>
+    <div style="text-align:center">
+    <button id="btnsubmit">Submit</button>
+    <a href="/login" class="cta-button" target="_blank">Log In</a>
+    </div>
+    </body>
+</html>

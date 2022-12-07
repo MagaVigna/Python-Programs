@@ -2,14 +2,9 @@
     <head>
         <title>Diet Application</title>
         <script src="https://code.jquery.com/jquery-3.6.1.js"> </script>
-        <!-- include jQuery library -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
-        <!-- Include Bootstrap Datepicker component -->
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>  
         <script>  
             $(document).ready(function(){
                     $.ajax({
-                        
                         url: "/foodtype",
                         success:function(response)
                         {
@@ -25,39 +20,18 @@
                         $("#foodtypeDropdown").html("Error occured in get");
                         }
                     });
-                    $("#foodtypeDropdown").change(function(){
-                        $.ajax({
-                            url: "/foodname",
-                            success:function(response)
-                            {   
-                                var detail = '<option value="">Please Select a food name</option>';
-                                var t =$('#foodtypeDropdown').val();
-                                for (var index in response)
-                                {   
-                                    if(response[index][3]==t)
-                                        detail += '<option value="' + response[index][0] + '"">' + response[index][1] + '</option>'; 
-                                    
-                                }
-                                $("#foodnameDropdown").html(detail);
-                            },
-                            error: function(r){
-                                $("#foodnameDropdown").html("Error occured in get");
-                            }
-                        });
-                    });
-                    $("#btnsubmit").click(function(e){
-                        var type =$('#foodtypeDropdown').val();
-                        var name=$("#foodnameDropdown").val();
-                        var quantity=$("#quantity").val();
-                        var date=$( "#datepicker" ).datepicker({ dateFormat: 'dd-mm-yy' }).val();
-                        var user ={"type": type,"name":name,'quantity':quantity,'date':date};
-                        var diet_url="/submitFoodDetails";
+                    $("#btnadd").click(function(e){
+                        var foodtypeid =$('#foodtypeDropdown').val();
+                        var name=$("#btnfoodname").val();
+                        var calories=$("#btncalories").val();
+                        var user ={"foodtypeid": foodtypeid,"name":name,'calories':calories};
+                        var diet_url="/addfooddetails";
                         $.ajax({
                             url:diet_url,
                             data:user,
                             type:"POST",
                             success:function(r){
-                                alert("Details successfully submitted!!!")  
+                                alert("Details successfully added!!!")  
                             },
                             error: function(r){
                                 alert("Error occured!!! Please try again later!!!")
@@ -89,6 +63,26 @@
         {
             padding: 5px 10px;
         }
+        .food-form 
+        {
+            width: 300px;
+            background-color: #ffffff;
+            padding: 20px;
+            margin: auto;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        .food-form label 
+        {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .food-form input[type="text"],
+        .food-form input[type="password"] 
+        {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
         .dropdown 
         {
             width: 200px;
@@ -114,36 +108,44 @@
         .cta-button
         {
             text-align: center;
-            background-color: rgb(49, 149, 206); 
+            background-color: rgb(13, 90, 138); 
             color: white; 
             padding: 14px 20px; 
             margin: 8px 0; 
             border: none; 
             border-radius: 4px;
         }
-      </style>
+        button
+        {
+            text-align: center;
+            background-color: rgb(13, 90, 138); 
+            color: white; 
+            padding: 14px 20px; 
+            margin: 8px 0; 
+            border: none; 
+            border-radius: 4px;
+        }
+    </style>
     </head>
     <body>
-        <div style="text-align:center">
-        <div class="dropdown">
-        <label for="datepicker">Date</label>
-        <input type="date" id="datepicker" name="datepicker">
-        <br/><br/><br/>
+        <div class="food-form">
+        <h3 style="text-align:center">ADD</h3>
+        <label id="lblfoodname">FoodName</label>
+        <input type="text" id="btnfoodname" ></input>
+        <br/><br/>
+        <label id="lblcalories">Calories</label>
+        <input type="text" id="btncalories"></input>
+        <br/><br/>
         <label for="foodtypeDropdown"><b>Food Type</b></label>
         <select  id="foodtypeDropdown"></select>
         <br/><br/><br/>
-        <label for="foodnameDropdown"><b>Food Name</b></label>
-        <select  id="foodnameDropdown"></select>
-        <br/><br/><br/>
-        <label for="quantity"><b>Quantity</b></label>
-        <input type="number" id="quantity" name="quantity" min="1" max="10" step="1">
-        <br/><br/><br/>
-        <button id="btnsubmit">Submit</button>
-        <br/><br/><br/>
         </div>
-        <p class="tagline">Or add new food items</p>
+        <div style="text-align:center">
+        <button id="btnadd">Add</button>
         <br/>
-        <a href="/add" class="cta-button" target="_blank">Add</a>
+        <p class="tagline">Go back to enter the food details</p>
+        <br/>
+        <a href="/calorie" class="cta-button" target="_blank">Go Back</a>
         </div>
     </body>
 </html>
