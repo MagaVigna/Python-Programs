@@ -18,7 +18,7 @@
                             for (var index in r)
                             {
                                 if (r[index][0]==username && r[index][1]==password)
-                                    window.open("/calorie")
+                                    window.open("/options")
 
                             }
                             $("#lblstatus").text(r);
@@ -92,9 +92,9 @@
         <h2 style="text-align: center;">Login</h2>
         <form>
             <label id="lblusername">Username</label><br>
-          <input type="text" id="txtusername" name="username"><br>
-          <label id="lblpassword">Password</label><br>
-          <input type="password" id="txtpassword" name="password"><br><br>
+            <input type="text" id="txtusername" name="username"><br>
+            <label id="lblpassword">Password</label><br>
+            <input type="password" id="txtpassword" name="password"><br><br>
         </form> 
         <div style="text-align:center">
         <button id="btnsubmit">Submit</button>

@@ -8,8 +8,8 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>  
         <script>  
             $(document).ready(function(){
-                    $.ajax({
-                        
+                    
+                    $.ajax({                       
                         url: "/foodtype",
                         success:function(response)
                         {
@@ -45,12 +45,14 @@
                             }
                         });
                     });
+
                     $("#btnsubmit").click(function(e){
+                        var username =$("#txtusername").val();
                         var type =$('#foodtypeDropdown').val();
                         var name=$("#foodnameDropdown").val();
                         var quantity=$("#quantity").val();
                         var date=$( "#datepicker" ).datepicker({ dateFormat: 'dd-mm-yy' }).val();
-                        var user ={"type": type,"name":name,'quantity':quantity,'date':date};
+                        var user ={"type": type,"name":name,'quantity':quantity,'date':date,'username':username};
                         var diet_url="/submitFoodDetails";
                         $.ajax({
                             url:diet_url,
@@ -126,6 +128,9 @@
     <body>
         <div style="text-align:center">
         <div class="dropdown">
+        <label id="lblusername">Username</label><br>
+        <input type="text" id="txtusername" name="username">
+        <br/><br/><br/>
         <label for="datepicker">Date</label>
         <input type="date" id="datepicker" name="datepicker">
         <br/><br/><br/>

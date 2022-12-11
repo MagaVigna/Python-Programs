@@ -10,6 +10,35 @@
     <canvas id="myLineChart" width="1000" height="1000"></canvas>
     <script>
         var plotdata=[];
+        var chartData = 
+        {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June'], // The months on the x-axis
+            datasets: 
+            [{
+                label: 'My Data',
+                data: []
+            }]
+        };
+        $.ajax({
+            url: 'example.com/get-data',
+            success: function(response) 
+            {
+                // Loop over the data in the response and extract the dates
+                for (var i = 0; i < response.length; i++)
+                {
+                    var date = new Date(response[i].date);
+                    chartData.datasets[0].data.push(date);
+                }
+
+                // Create the chart using the Chart.js library
+                var ctx = document.getElementById('myChart').getContext('2d');
+                var myChart = new Chart(ctx, 
+                {
+                    type: 'line',
+                    data: chartData
+                });
+            }
+        });
         $(document).ready(function(){
             
             $.ajax({

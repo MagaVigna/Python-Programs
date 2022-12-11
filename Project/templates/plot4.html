@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calorie Tracker</title>
+  <!-- Include chart.js and jQuery libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+  <!-- Create HTML canvas element -->
+  <canvas id="myChart" width="50" height="20"></canvas>
+  <!-- Retrieve data from database and create chart instance -->
+  <script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var chart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [],
+        datasets: [{
+          label: 'Calories',
+          data: [],
+          backgroundColor: 'rgba(255, 99, 132, 0.2)',
+          borderColor: 'rgba(255, 99, 132, 1)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        title: {
+          display: true,
+          text: 'Calorie Tracker - Your Progress'
+        },
+        legend: {
+          display: false
+        },
+        scales: {
+          xAxes: [{
+            scaleLabel: {
+              display: true,
+              labelString: 'Month'
+            }
+          }],
+          yAxes: [{
+            scaleLabel: {
+              display: true,
+              labelString: 'Calories'
+            }
+          }]
+        }
+      }
+    });
+    // Retrieve data from database using AJAX
+    $.ajax({
+      url: '/dataForPlot',
+      dataType: 'json',
+      success: function(data) 
+        {
+            // Update chart with new data
+            chart.data.labels = data.map(function(d) { return d.month; });
+            chart.data.datasets[0].data = data.map(function(d) { return d.calories; });
+            chart.update();
+        }
+    });
+    // Create a new canvas element
+    //     var canvas = document.createElement("canvas");
+
+    //     // Set the width and height of the canvas
+    //     canvas.width = 500;
+    //     canvas.height = 300;
+    // // Append chart to HTML canvas element
+    document.getElementById('myChart')
+  </script>
+</body>
+</html>

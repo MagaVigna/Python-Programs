@@ -1,5 +1,7 @@
 from flask import Flask,render_template,request
 import mysql.connector
+import json
+
 
 mydb = mysql.connector.connect(
   host="localhost",
@@ -56,12 +58,17 @@ def submitting_user_details():
 
 @app.route("/submitFoodDetails", methods=["POST"])
 def submitting_food_details():
+    username=request.form.get("username")
     type=request.form.get("type")
     name=request.form.get("name")
     quantity=request.form.get("quantity")
     date=request.form.get("date")
-    sql = '''INSERT INTO project.user_calorie_intake_details (food_calorie_detail_id,food_type_id,quantity,date) values(%s,%s,%s,%s)'''
-    detail=[name,type,quantity,date]
+    sql = '''INSERT INTO project.user_calorie_intake_details (food_calorie_detail_id,food_type_id,quantity,date,user_details_id) 
+    values(%s,%s,%s,%s,
+        (SELECT id
+        FROM user_details
+        WHERE user_details.username=%s))'''
+    detail=[name,type,quantity,date,username]
     mycursor.execute(sql, detail)
     mydb.commit()
     return ''
@@ -93,8 +100,8 @@ def submitlogin():
     # if username==dbUsername and password==dbpassword:
     #     return render_template('login.html')
     details=[]
-    mycursor.execute("SELECT username,password FROM project.user_details")
-    myresult = mycursor.fetchall()
+    sql=mycursor.execute("SELECT username,password FROM project.user_details")
+    myresult = sql.fetchall()
     for index in myresult:
         details.append(index)
     return details
@@ -124,26 +131,39 @@ def add_food_details():
     detail=[name,calories,foodtypeid]
     mycursor.execute(sql, detail)
     mydb.commit()
+
     return ''
 
 
 @app.route("/plot")
 def progress_graph():
-    return render_template("plotting.html")
+    return render_template("plot4.html")
 
 
 @app.route("/dataForPlot")
 def getting_data_for_graph():
-    details=[]
-    mycursor.execute('''SELECT project.user_calorie_intake_details.food_calorie_detail_id * project.user_calorie_intake_details.food_calorie_detail_id.quantity
-    FROM user_calorie_intake_details 
-    INNER JOIN project.food_calorie_details 
-    ON user_calorie_intake_details.food_calorie_detail_id = food_calorie_details.id''')
-    myresult = mycursor.fetchall()
-    for index in myresult:
-        details.append(index)
-    
-    return details
+    sql=mycursor.execute('''SELECT date,food_calorie_details.calories * user_calorie_intake_details.quantity AS total_calories_consumed
+                        FROM user_calorie_intake_details 
+                        INNER JOIN project.food_calorie_details 
+                        ON user_calorie_intake_details.food_calorie_detail_id = food_calorie_details.id
+                        INNER JOIN project.user_details
+                        ON user_calorie_intake_details.user_details_id = user_details.id''')
+    myresult = sql.fetchall()
+    # labels = [row[0].strftime("%B") for row in myresult]
+    # values = [row[1] for row in myresult]
+    # headers = {
+    #     "Access-Control-Allow-Origin": "*",
+    #     "Access-Control-Allow-Methods": "GET",
+    # }
+    # return jsonify({
+    # 'labels': labels,
+    # 'values': values
+    # }), 200, headers
+    # # return labels,values, 200, headers
+    data_json = [{'month': d[0].strftime("%B"), 'calories': d[1]} for d in myresult]
+
+    # Return JSON data
+    return json.dumps(data_json)
 
 
 app.run()

@@ -1,6 +1,74 @@
 <html>
-    <head>
-        <title>Diet Application</title>
+  <head>
+    <title>Diet Application</title>
+    <style>
+      h1
+      {
+        font-family: tahoma;
+        font-size: 30px;
+        text-align: center;
+      }
+      a
+      {
+        width: 100%; 
+        padding: 12px 20px; 
+        margin: 8px 0; 
+        box-sizing: border-box; 
+        border: 1px solid black; 
+        border-radius: 4px;
+      }
+      body 
+      {
         
-    </head>
+        background-color: #ffffff;
+        font-family: Arial, sans-serif;
+        background-image: url("https://img.freepik.com/free-photo/blue-abstract-gradient-wave-wallpaper_53876-108364.jpg?w=1380&t=st=1670750001~exp=1670750601~hmac=fbced3c5673c0c9593308caf576c034ccbb7abbd72d5cddaf2e19db866e02ced");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size:100%100%;
+        background-position: right;
+      }
+
+    .container 
+      {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 30px;
+      }
+
+
+    .cta-button 
+    {
+        background: linear-gradient(to right, rgb(41, 101, 240), rgb(129, 185, 227));
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        transition: all 0.4s ease 0s;
+    }
+
+    .cta-button:hover 
+    {
+        background: linear-gradient(to right, rgb(234, 0, 255), rgb(149, 0, 255));
+        transform: translateY(-4px);
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
+    }
+
+  </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>What do you want to do today?</h1>
+      <br/><br/>
+      <a href="/calorie" class="cta-button"  target="_blank">Add details about your Food</a>
+      <br/><br/>
+      <a href="/plot" class="cta-button" target="_blank">See your progress</a>
+    </div>
+  </body>
+
 </html>
