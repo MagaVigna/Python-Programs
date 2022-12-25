@@ -1,7 +1,7 @@
 built_in_word=[]
 built_in_word_1=["d","o","t"] #declaring the words that to should be guessed by the user
 built_in_word_2=["w","a","l","k"]
-built_in_word_3=["s","a","y","u","r"]
+built_in_word_3=["h","e","l","l","o"]
 
 
 def get_input(): #function to get the input from the user
@@ -24,9 +24,14 @@ def check_word(word): #checking if the user entered word is correct or wrong
     for index in range (0,len(word)): #to manipulate the string
         if built_in_word[index]==word[index]: #if letter found in the given string printing G
             print(word[index],"- G")
-            found_letter.append(word[index])#found at the wrond position printing Y
-        elif word[index] in built_in_word and word.count(word[index])==1:
-            print(word[index],"- Y")
+            # found at the wrond position printing Y
+            found_letter.append(word[index])
+        elif word[index] in built_in_word:
+            if word.count(word[index])>built_in_word.count(word[index]): 
+                print(word[index],"- R")
+                word[index]="@"
+            elif word.count(word[index])==built_in_word.count(word[index]):
+                print(word[index],"- Y")
         else:   #not found at all printing R
             print(word[index],"- R")
 

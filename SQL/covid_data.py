@@ -15,9 +15,9 @@ mydb = mysql.connector.connect(
 mycursor=mydb.cursor(buffered=True)
 
 # mycursor.execute("CREATE DATABASE covid_data")
-
+ 
 #creating a table
-mycursor.execute("CREATE TABLE covid (state VARCHAR(20), no_of_deaths VARCHAR(20),recovered VARCHAR(20), positive_cases VARCHAR(20), age_group VARCHAR(20), date VARCHAR(10))") 
+#1mycursor.execute("CREATE TABLE covid(state VARCHAR(20), no_of_deaths VARCHAR(20),recovered VARCHAR(20), positive_cases VARCHAR(20), age_group VARCHAR(20), date VARCHAR(10))") 
 
 #inserting values into the table
 sql = "INSERT INTO covid (state,no_of_deaths,recovered,positive_cases,age_group,date) VALUES (%s, %s,%s,%s, %s,%s)"
