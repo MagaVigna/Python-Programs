@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <title>Diet Application</title>
+        <script src="https://code.jquery.com/jquery-3.6.1.js"> </script>
+        <script>  
+            $(document).ready(function(){
+                $("#btngetdetails").click(function(e){
+                $.ajax({
+                    url:"/displayuserdetails",
+                    success: function(r){
+                        var detail=''
+                        for (var index in r){
+                            var data="Age:"+r[index][0]+", Weight: "+r[index][1]+", Height: "+r[index][2]+"<br\>";
+                            detail=detail+data
+                        }   
+                        $("#lbldetail").html(detail);
+
+                    },
+                    error: function(r){
+                        $("#lbldetail").html("Error occured in get");
+                    }
+                });
+            });
+            $("#btnsubmit").click(function(e){
+                var age =$("#txtAge").val();
+                var weight=$("#txtweight").val();
+                var height=$("#txtheight").val();
+                var user ={"age": age,"weight":weight,"height":height};
+                var diet_url="/getuserdetails";
+                $.ajax({
+                    url:diet_url,
+                    data:user,
+                    type:"POST",
+                    success:function(r){
+                        $("#lblstatus").text(r);
+                    },
+                    error: function(r){
+                        $("#lblstatus").text("Error occured");
+                    }
+                });
+            }); 
+        });
+    </script>
+    </head>
+    <body>
+        <div id="lbldetail"/>
+        <button id="btngetdetails">Get Details</button>
+        <br/><br/>
+        <label id="lblage">Age</label>
+        <input type="text" id="txtAge"></input>
+        <br/>
+        <label id="lblweight">Weight</label>
+        <input type="text" id="txtweight"></input>
+        <br/>
+        <label id="lblheight">Height</label>
+        <input type="text" id="txtheight"></input>
+        <br/>
+        <button id="btnsubmit">Submit</button>
+        <label id="lblstatus"></label>
+    </body>
+</html>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>

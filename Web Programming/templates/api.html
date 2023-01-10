@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Diet API</title>
+</head>
+<body>
+  <h1>Diet Information</h1>
+  <div id="data-container"></div>
+  <script>
+    // Make a request to the API's URL
+    fetch(' https://api.calorieninjas.com/v1')
+      // Parse the response as JSON
+      .then(response => response.json())
+      // Use the data from the response
+      .then(data => {
+        // Get the container element
+        const container = document.querySelector('#data-container');
+
+        // Create an h2 element to display the diet name
+        const title = document.createElement('h2');
+        title.textContent = data.name;
+
+        // Create a p element to display the diet description
+        const description = document.createElement('p');
+        description.textContent = data.description;
+
+        // Create an unordered list to display the diet's benefits
+        const benefitsList = document.createElement('ul');
+        for (const benefit of data.benefits) {
+          const listItem = document.createElement('li');
+          listItem.textContent = benefit;
+          benefitsList.appendChild(listItem);
+        }
+
+        // Add the elements to the container
+        container.appendChild(title);
+        container.appendChild(description);
+        container.appendChild(benefitsList);
+      });
+  </script>
+</body>
+</html>

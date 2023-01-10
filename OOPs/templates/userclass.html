@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Users List</title>
+  </head>
+  <body>
+    <h1>Users List</h1>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>age</th>
+        <th>height</th>
+        <th>weight</th>
+        <th>gender</th>
+        <th>password</th>
+        <th>dob</th>
+        <th>username</th>
+      </tr>
+      {% for user in users %}
+      <tr>
+        <td>{{ user.id }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.age }}</td>
+        <td>{{ user.height }}</td>
+        <td>{{ user.weight }}</td>
+        <td>{{ user.gender }}</td>
+        <td>{{ user.password }}</td>
+        <td>{{ user.dob }}</td>
+        <td>{{ user.username }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>
