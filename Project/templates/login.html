@@ -1,103 +1,179 @@
 <html>
-    <head>
-        <title>Diet Application</title>
-        <script src="https://code.jquery.com/jquery-3.6.1.js"> </script>
-        <script>  
-            $(document).ready(function(){
-                $("#btnsubmit").click(function(e)
-                {
-                    var username =$("#txtusername").val();
-                    var password=$("#txtpassword").val();
-                    var user ={"username": username,"password":password};
-                    var login_url="/submitinlogin";
-                    $.ajax(
-                    {
-                        url:login_url,
-                        success:function(r)
-                        {
-                            for (var index in r)
-                            {
-                                if (r[index][0]==username && r[index][1]==password)
-                                    window.open("/options")
+<head>
+  <!-- For google icons  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 
-                            }
-                            $("#lblstatus").text(r);
-                        },
-                        error: function(r)
-                        {
-                            $("#lblstatus").text("Error occured");
-                        }
-                    });
-                }); 
-        });
-    </script>
-    <style>
-        div 
-        {
-          margin-bottom: 10px;
+  <title>Login form</title>
+  <style>
+        body{
+        padding: 0;
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        color: white;
         }
-        label 
-        {
-            display: inline-block;
-            width: 110px;
-            color: #212121;
-        }
-        input 
-        {
-            padding: 5px 10px;
-        }
-        body
-        {
-            background-image:url("https://img.freepik.com/free-photo/oatmeal-dryfruits-with-bird-paradise-flower-white-background_23-2147906999.jpg?w=1380&t=st=1670158118~exp=1670158718~hmac=da90791e1f24f339815df1464ad57a90f46a4ec6e81ad9c086b375b767b01b7a");
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: 100% 100%;
-        }
-        button
-        {  
-            text-align: center;
-            background-color: rgb(7, 103, 7); 
-            color: rgb(232, 226, 226); 
-            padding: 14px 20px; 
-            margin: 8px 0; 
-            border: none; 
-            border-radius: 4px;
 
-        }  
-        input
-        {
-            width: 100%; 
-            padding: 12px 20px; 
-            margin: 8px 0; 
-            box-sizing: border-box; 
-            border: 1px solid black; 
-            border-radius: 4px;
+        h2{
+          font-family: Arial, Helvetica, sans-serif;
+          color: black;
+        }
+        
+        .background {
+        background: url("https://img.freepik.com/free-photo/colorful-vegetable-frame-white_176474-73.jpg?w=996&t=st=1672556975~exp=1672557575~hmac=ce52ccb818ee2203ceb4f7ba72d0112f6a36bd8a4c1f3da548e260a7ee84a9c1")
+            rgba(255, 255, 255, 0.61);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-blend-mode: darken;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: -1;
+        filter: blur(5px);
+        min-height: 800px;
+
+        }
+
+        .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 500px;
+        margin: 10vh auto;
+        background: transparent;
+        box-shadow: 0 0 15px rgb(0, 0, 0);
+        border-radius: 25px;
+        }
+
+        h2 {
+        font-size: 30px;
+        }
+
+        form {
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        width: 85%;
+        }
+
+        .form-item {
+        display: flex;
+        width: 90%;
+        background: transparent;
+        margin: 10px auto;
+        border-radius: 15px;
+        align-items: center;
+        border-bottom: 1px solid rgb(82, 81, 81);
+        }
+
+        .form-item:hover {
+        border: 1px solid rgb(82, 81, 81);
+        }
+
+        input {
+        background: transparent;
+        width: 80%;
+        height: 30px;
+        outline: none;
+        border: none;
+        margin: auto;
+        color: black;
+        font-size: 17px;
+        }
+
+        span {
+        user-select: none;
+        margin: 5px;
+        color: rgb(172, 172, 172);
+        background: black;
+        padding: 5px;
+        border-radius: 18px;
+        }
+
+        button[type="submit"] {
+        width: 180px;
+        font-size: 20px;
+        margin: 10px auto;
+        padding: 8px;
+        background: rgba(122, 123, 116, 0.72);
+        border: none;
+        color: white;
+        }
+
+        button[type="submit"]:hover {
+        background: rgba(222, 236, 34, 0.678);
+        }
+
+        /* p:first-of-type {
+        margin: 0;
+        } */
+
+        .options {
+        display: flex;
+        margin: 10px auto;
+        justify-content: center;
+        flex-wrap: wrap;
+        }
+
+        button {
+        font-size: 18px;
+        padding: 5px 16px;
+        margin: 5px 15px;
+        width: 180px;
+        background: transparent;
+        color: white;
+        cursor: pointer;
+        transition: all 0.7s ease;
+        }
+
+        p {
+        font-size: 18px;
+        margin: 5px;
+        color: black;
+        }
+
+        a {
+        color: rgb(0, 0, 0);
+        }
+
+        a:hover {
+        color: rgb(234, 21, 21);
         } 
-        form
-        {
-            margin: 0 auto; 
-            width: 30%; 
-            padding: 20px; 
-            border: 2px solid rgb(47, 46, 46); 
-            background-color: rgb(243, 242, 242);
-            border-radius: 10px;
-        }
-        label
-        {
-            font-weight: bold;
-        }
-      </style>
-    </head>
-    <body >
-        <h2 style="text-align: center;">Login</h2>
-        <form>
-            <label id="lblusername">Username</label><br>
-            <input type="text" id="txtusername" name="username"><br>
-            <label id="lblpassword">Password</label><br>
-            <input type="password" id="txtpassword" name="password"><br><br>
-        </form> 
-        <div style="text-align:center">
-        <button id="btnsubmit">Submit</button>
-        </div>
-      </body>
+  </style>
+
+</head>
+
+<body>
+
+  <!-- for background -->
+  <div class="background"></div>
+
+  <!-- for form container -->
+  <div class="container">
+    <h2>Login</h2>
+    <form action="/submitinlogin" method="POST">
+
+      <div class="form-item">
+        <span class="material-icons-outlined">
+          account_circle
+        </span>
+        <input type="text" name="username" id="username" placeholder="Username">
+      </div>
+
+      <div class="form-item">
+        <span class="material-icons-outlined">
+          lock
+        </span>
+        <input type="password" name="password" id="password" placeholder="password">
+      </div>
+
+      <button type="submit">LOGIN</button>
+
+      <p>New User ? <a href="signup"> Create an Account</a></p>
+
+    </form>
+  </div>
+</body>
+
 </html>

@@ -1,0 +1,66 @@
+<!-- <html>
+<head>
+  <title>Food Suggestions</title>
+</head>
+<body>
+  <h1>Food Suggestions</h1>
+  <form action="/food-suggestions" method="POST">
+    <label for="dietary-preference">Dietary Preference:</label><br>
+    <select id="dietary-preference" name="dietary-preference">
+      {% for preference in preferences %}
+      <option value="{{ preference['value'] }}">{{ preference['label'] }}</option>
+      {% endfor %}
+    </select>
+    <input type="submit" value="Submit">
+  </form>
+  <form action="/food-suggestions" method="POST">
+    <label for="dietary-preference">Dietary Preference:</label><br>
+    <input type="text" id="dietary-preference" name="dietary-preference"><br>
+    <input type="submit" value="Submit">
+  </form>
+  
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Recipe Search</title>
+</head>
+<body>
+  <h1>Recipe Search</h1>
+  <form method="POST">
+    <label for="dietary_preference">Dietary Preference:</label><br>
+    <input type="text" id="dietary_preference" name="dietary_preference"><br>
+    <input type="submit" value="Submit">
+  </form> 
+  <br>
+  <!-- Display the search results here -->
+  <div id="search_results"></div>
+</body>
+</html>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+    // When the form is submitted
+    $('form').submit(function(event) {
+      // Prevent the form from being submitted
+      event.preventDefault();
+
+      // Get the dietary preference entered by the user
+      var dietary_preference = $('#dietary_preference').val();
+
+      // Make an AJAX request to the server
+      $.ajax({
+        url: '/search',
+        method: 'POST',
+        data: { 'dietary_preference': dietary_preference },
+        success: function(data) {
+          // Display the search results in the div element
+          $('#search_results').html(data);
+        }
+      });
+    });
+  });
+</script>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>DietPal</title>
+	<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@500;600;700;900&family=Roboto:wght@500;600;700;900&display=swap" rel="stylesheet">
+	<script>
+		const menuButton = document.querySelector('.menu-button');
+		const menuItems = document.querySelector('.menu-items');
+
+		menuButton.addEventListener('click', () => {
+		document.body.classList.toggle('show-menu');
+		});
+	</script>
+	<script>
+		function signoutFunction() {
+		document.getElementById("signoutform").submit();
+		}
+	</script>
+	<style>
+		html {
+			font-family: "Roboto", sans-serif;
+			color: #363636;
+			background-color: #fff;
+		}
+		.main-body {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+			background-color: #ebf1f6;
+		}
+		.nav-bar {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			height: 70px;
+			background-color: #a77f06c3;
+			color: #fff;
+			padding: 0 20px;
+			box-sizing: border-box;
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			z-index: 10;
+		}
+		.nav-logo {
+			display: flex;
+			align-items: center;
+		}
+		.logo-svg {
+			padding: 24px;
+			padding-right: 12px;
+            font-size: 20px;
+		}
+		.nav-text {
+			line-height: 76px;
+			padding-left: 30px;
+			text-transform: uppercase;
+			font-size: 14px;
+			font-weight: 600;
+			cursor: pointer;
+		}
+		.add-background-image {
+			background-image: url('https://img.freepik.com/free-photo/top-view-enjoyable-breakfast_23-2147991195.jpg?w=996&t=st=1672235814~exp=1672236414~hmac=7e400bcd8c172149adc0ca8ef30023ef50f7dbbc14ae1ffe6857acb68d149a05');
+			background-position: center;
+			background-size: cover;
+			width: 100%;
+			height: 100vh;
+			position: absolute;
+		}
+		.graph-background-image {
+			background-image: url('https://cdn.pixabay.com/photo/2018/01/12/16/16/growth-3078544_960_720.png');
+			background-position: center;
+			background-size: cover;
+			width: 100%;
+			height: 100vh;
+			position: absolute;
+		}
+		.api-background-image {
+			background-image: url('https://img.freepik.com/free-photo/jar-oats-basil-leaves-orange-slices-milk-napkin-white-background_23-2148026850.jpg?w=1380&t=st=1672236428~exp=1672237028~hmac=056d29d924be3ec05dd39bafe2051a76ba251e0dd8502dfda87f7e017243d9bf');
+			background-position: center;
+			background-size: cover;
+			width: 100%;
+			height: 100vh;
+			position: absolute;
+		}
+		.content-body {
+			width: 100%;
+			height: 100vh;
+			position: relative;
+            display: flex;
+			align-items: flex-start;
+			justify-content: center;
+			flex-direction: column;
+			padding: 70px;
+			box-sizing: border-box;
+		}
+		.title {
+			font-family: 'Merriweather', serif;
+			word-break: break-word;
+			margin: 0;
+			font-size: 56px;
+			text-align: center;
+			font-weight: 600;
+			color: #1b1b1b;
+		}
+		.sub-title {
+			font-family: 'Open Sans', sans-serif;
+			text-align: center;
+			font-weight: 500;
+			font-size: 18px;
+		}
+		.click-here-button {
+			background-color: #a77f06c3;
+			color: #fff;
+			padding: 14px 28px;
+			border-radius: 4px;
+			font-size: 14px;
+			margin-top: 8px;
+			cursor: pointer;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.click-here-text {
+			margin: 0;
+			font-weight: 600;
+		}
+
+	</style>
+</head>
+<body>
+	<header class="nav-bar">
+		<div class="nav-logo">
+			<div class="logo-svg">DietPal</div>
+		</div>
+		<div class="nav-text">
+			<form id='signoutform' action="/logout" method="post">
+				<a href="#" onclick="signoutFunction()">
+					Sign Out
+					</a>
+			  </form>
+		</div>
+		  
+	</header>
+	<div class="main-body">
+		<div class="add-background-image"></div>
+		<div class="content-body">
+			<h1 class="title">Add  food</h1>
+                <p class="sub-title">Just enter the name of the food and let us keep track of the calories you have taken</p>
+                <div class="click-here-button">
+                    <span class="click-here-text"><a href="/calorie" class="cta-button">Click Here</a></span>
+                </div>
+            </div>
+        </div>
+        <div class="main-body">
+            <div class="graph-background-image"></div>
+            <div class="content-body">
+                <h1 class="title">See progress</h1>
+                    <p class="sub-title">Visually see your calorie intake details</p>
+                    <div class="click-here-button">
+                        <span class="click-here-text"><a href="/plot" class="cta-button">Click Here</a></span>
+                    </div>
+                </div>
+            </div>
+		<div class="main-body">
+			<div class="api-background-image"></div>
+			<div class="content-body">
+				<h1 class="title">Know about your food</h1>
+					<p class="sub-title">Just enter the name of the food and see the nutrient details</p>
+					<div class="click-here-button">
+						<span class="click-here-text"><a href="/apihome" class="cta-button">Click Here</a></span>
+					</div>
+			</div>
+		</div>
+    </body>
+    </html>
+    

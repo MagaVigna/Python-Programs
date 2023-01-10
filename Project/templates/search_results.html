@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Recipe Search Results</title>
+</head>
+<body>
+  <h1>Recipe Search Results</h1>
+  {% if recipes %}
+    <ul>
+      {% for recipe in recipes %}
+        <li>{{ recipe['recipe']['label'] }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    No recipes found.
+  {% endif %}
+</body>
+</html>

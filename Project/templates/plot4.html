@@ -5,6 +5,15 @@
   <!-- Include chart.js and jQuery libraries -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <style>
+    body
+        {
+            background-image:url("https://img.freepik.com/free-vector/white-abstract-background_23-2148810113.jpg?w=996&t=st=1670177138~exp=1670177738~hmac=c6efd0596b3b9fe686ea27bdd13457d6e8a8bef79e524b0276621636e3d68825");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+  </style>
 </head>
 <body>
   <!-- Create HTML canvas element -->
@@ -34,11 +43,11 @@
         },
         scales: {
           xAxes: [{
-            scaleLabel: {
-              display: true,
-              labelString: 'Month'
-            }
-          }],
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Date'
+                }
+              }],
           yAxes: [{
             scaleLabel: {
               display: true,
@@ -55,7 +64,7 @@
       success: function(data) 
         {
             // Update chart with new data
-            chart.data.labels = data.map(function(d) { return d.month; });
+            chart.data.labels = data.map(function(d) { return d.day; });
             chart.data.datasets[0].data = data.map(function(d) { return d.calories; });
             chart.update();
         }

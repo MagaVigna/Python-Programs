@@ -1,0 +1,57 @@
+<html>
+<head>
+  <title>Food Search</title>
+  <style>
+    h1
+    {
+      text-align: center;
+    }
+    form 
+    {
+      margin: 20px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    label 
+    {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input[type="text"] 
+    {
+      display: block;
+      margin-bottom: 20px;
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    input[type="submit"] 
+    {
+      padding: 10px 20px;
+      background: #333;
+      color: #fff;
+      border: 0;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    body
+    {
+      background-image:url("https://img.freepik.com/free-vector/white-abstract-background_23-2148810113.jpg?w=996&t=st=1670177138~exp=1670177738~hmac=c6efd0596b3b9fe686ea27bdd13457d6e8a8bef79e524b0276621636e3d68825");
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: 100% 100%;
+    }
+  </style>
+</head>
+<body>
+  <h1>Food Search</h1>
+  <form action="/search" method="GET">
+    <label for="query">Search:</label>
+    <input type="text" name="query" id="query">
+    <input type="submit" value="Search">
+  </form>
+</body>
+</html>

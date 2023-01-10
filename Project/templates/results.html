@@ -1,0 +1,79 @@
+<html>
+<head>
+  <title>Search Results</title>
+  <style>
+    body 
+    {
+      font-family: sans-serif;
+      color: #333;
+    }
+    h1, h2 
+    {
+      text-align: center;
+    }
+    h2 
+    {
+      margin-bottom: 0;
+    }
+    p 
+    {
+      margin-top: 0;
+    }
+    img 
+    {
+      max-width: 100%;
+      display: inline-block;
+    }
+    .result 
+    {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ddd;
+      box-shadow: 0 0 5px #ddd;
+      text-align: center;
+    }
+    .diet-labels 
+    {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 10px 0;
+      justify-content: center;
+      
+    }
+    .diet-label 
+    {
+      display: inline-block;
+      background-color: #ddd;
+      color: #333;
+      padding: 5px 10px;
+      margin: 5px;
+      font-size: 0.9em;
+      border-radius: 5px;
+      justify-content: center;
+      
+    }
+    body
+    {
+      background-image:url("https://img.freepik.com/free-vector/white-abstract-background_23-2148810113.jpg?w=996&t=st=1670177138~exp=1670177738~hmac=c6efd0596b3b9fe686ea27bdd13457d6e8a8bef79e524b0276621636e3d68825");
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: 100% 100%;
+    }
+  </style>
+</head>
+<body>
+  <h1>Search Results</h1>
+  {% for item in data['hits'] %}
+    <div class="result">
+      <h2>{{ item['recipe']['label'] }}</h2>
+      <img src="{{ item['recipe']['image'] }}">
+      <div class="diet-labels">
+        {% for label in item['recipe']['dietLabels'] %}
+          <div class="diet-label">{{ label }}</div>
+        {% endfor %}
+      </div>
+    </div>
+  {% endfor %}
+</body>
+</html> 

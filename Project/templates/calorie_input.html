@@ -47,12 +47,12 @@
                     });
 
                     $("#btnsubmit").click(function(e){
-                        var username =$("#txtusername").val();
+                        
                         var type =$('#foodtypeDropdown').val();
                         var name=$("#foodnameDropdown").val();
                         var quantity=$("#quantity").val();
                         var date=$( "#datepicker" ).datepicker({ dateFormat: 'dd-mm-yy' }).val();
-                        var user ={"type": type,"name":name,'quantity':quantity,'date':date,'username':username};
+                        var user ={"type": type,"name":name,'quantity':quantity,'date':date};
                         var diet_url="/submitFoodDetails";
                         $.ajax({
                             url:diet_url,
@@ -128,8 +128,7 @@
     <body>
         <div style="text-align:center">
         <div class="dropdown">
-        <label id="lblusername">Username</label><br>
-        <input type="text" id="txtusername" name="username">
+        
         <br/><br/><br/>
         <label for="datepicker">Date</label>
         <input type="date" id="datepicker" name="datepicker">
@@ -148,7 +147,7 @@
         </div>
         <p class="tagline">Or add new food items</p>
         <br/>
-        <a href="/add" class="cta-button" target="_blank">Add</a>
+        <a href="/add" class="cta-button">Add</a>
         </div>
     </body>
 </html>

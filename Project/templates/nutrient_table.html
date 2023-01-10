@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <title>Nutrient Data</title>
+  </head>
+  <body>
+    <h1>Nutrient Data</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Nutrient</th>
+          <th>Quantity</th>
+          <th>Unit</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for nutrient in nutrient_data %}
+        <tr>
+          <td>{{ nutrient.name }}</td>
+          <td>{{ nutrient.quantity }}</td>
+          <td>{{ nutrient.unit }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>
