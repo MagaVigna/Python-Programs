@@ -1,5 +1,6 @@
 from flask import Flask,render_template,request,redirect, session, redirect, url_for, jsonify
 from flask_login import logout_user, LoginManager
+from mysql.connector import cursor
 import mysql.connector,json,requests
 
 
@@ -21,12 +22,13 @@ login_manager.init_app(app)
 
 @login_manager.user_loader
 def load_user(user_id):
-    mycursor.execute('''SELECT id
-            FROM user_details''')
-    user_id=mycursor.fetchall()
-    return user_id
-    
+    result = cursor.var(str, 255)
+    mycursor = cursor(prepared=True)
+    mycursor.callproc('load_user', (user_id, result))
+    mycursor.close()
+    return result.getvalue()
 
+    
 @app.route("/home")
 def home():
     return render_template("home.html")
@@ -76,44 +78,38 @@ def submitting_user_details():
     username=request.form.get("username")
     password=request.form.get("password")
     dob=request.form.get("dob")
+    mycursor.callproc('submit_user_detail', (age, name, weight, height, gender, username, password, dob))
 
-    # Check if the username already exists in the database
-    check_query = "SELECT username FROM project.user_details WHERE username=%s"
-    mycursor.execute(check_query, (username,))
+    # retrieve the result
     result = mycursor.fetchone()
+    if result is None:
+        message = "No data returned"
+    else:
+        message = result[0]
 
-    # If the username already exists, return an error message
-    if result is not None:
-        return jsonify(message="Error: Username already exists"), 400
-
-    # If the username does not exist, insert the new user details into the database
-    sql = '''INSERT INTO project.user_details (age,name,weight,height,gender,username,password,dob ) values(%s,%s,%s,%s,%s,%s,%s,%s)'''
-    detail=[age,name,weight,height,gender,username,password,dob]
-    mycursor.execute(sql, detail)
+    # close the cursor and connection
+    mycursor.close()
     mydb.commit()
-    return jsonify(message="Successfully registered!")
+
+    
+    
+
+    return jsonify({'message': message})
 
 
 
 @app.route("/submitFoodDetails", methods=["POST"])
 def submitting_food_details():
     if 'username' in session:
-        # username_list=[]
         username = session['username']
-        # username_list.append(username)
         type=request.form.get("type")
         name=request.form.get("name")
         quantity=request.form.get("quantity")
         date=request.form.get("date")
-        sql = '''INSERT INTO project.user_calorie_intake_details (food_calorie_detail_id,food_type_id,quantity,date,user_details_id) 
-        values(%s,%s,%s,%s,
-            (SELECT id
-            FROM user_details
-            WHERE user_details.username=%s))'''
-        detail=[name,type,quantity,date,username]
-        mycursor.execute(sql, detail)
+        mycursor.callproc('submit_food_details', (username, type, name, quantity, date))
         mydb.commit()
         return ''
+
 
 
 @app.route('/calorie')
@@ -122,31 +118,19 @@ def calorie():
         return render_template('calorie_input.html')
 
 
-@app.route('/submitinlogin',methods=['GET','POST'])
+@app.route('/submitinlogin', methods=['GET', 'POST'])
 def submitlogin():
-    username = request.form['username']
-    password = request.form['password']
+    username = request.form.get('username')
+    password = request.form.get('password')
     session['username'] = username
-    # mycursor.execute('SELECT username FROM project.user_details')
-    # dbUsername=mycursor.fetchone()
-    # mycursor.execute('SELECT password FROM project.user_details ')
-    # dbpassword=mycursor.fetchone()
-    # if username==dbUsername and password==dbpassword:
-    #     return render_template('optionpage.html')
-    # details=[]
-    # mycursor.execute("SELECT username,password FROM project.user_details")
-    # myresult = mycursor.fetchall()
-    # for index in myresult:
-    #     details.append(index)
-    # return details
-    mycursor.execute('SELECT * FROM project.user_details WHERE username=%s AND password=%s', (username, password))
-    user = mycursor.fetchone()
-    if user:
+    mycursor.callproc('submit_login', (username, password))
+    # Fetch the result of the stored procedure
+    user = mycursor.fetchall()
+    if user is not None:
         return redirect(url_for('option'))
     else:
         # If the credentials are invalid, display an error message
         return render_template('login.html', error='Invalid login')
-    return render_template("home.html")
 
 
 @app.route("/options", methods=['GET','POST'])
@@ -160,17 +144,13 @@ def returnadd():
     if 'username' in session:
         return render_template("addnewfood.html")
 
-
 @app.route("/addfooddetails",methods=["POST"])
 def add_food_details(): 
     name=request.form.get("name")
     calories=request.form.get("calories")
     foodtypeid=request.form.get("foodtypeid")
-    sql = '''INSERT INTO project.food_calorie_details (food_name,calories,food_type_id) values(%s,%s,%s)'''
-    detail=[name,calories,foodtypeid]
-    mycursor.execute(sql, detail)
+    mycursor.callproc('add_food_details', (name, calories, foodtypeid))
     mydb.commit()
-
     return ''
 
 
@@ -178,6 +158,23 @@ def add_food_details():
 def progress_graph():
     if 'username' in session:
         return render_template("plot4.html")
+
+
+# @app.route("/dataForPlot")
+# def getting_data_for_graph():
+#     if 'username' in session:
+#         username = session['username']
+#         mycursor.execute("SET @user_id = NULL;") # registering the output parameter
+#         mycursor.execute("SET @username = %s;", (username,)) # passing the input parameter
+#         mycursor.execute('CALL getUserId(@username, @user_id);') # calling the stored procedure
+#         mycursor.execute('SELECT @user_id;') # fetching the output parameter
+#         user_id = mycursor.fetchone()[0]
+#         mycursor.callproc('getCaloriesData', (user_id,))
+#         myresult = mycursor.fetchall()
+#         data_json = [{'day': d[0].strftime("%d %B %Y") if d[0] else "No Data", 'calories': float(d[1])} for d in myresult]
+#         return json.dumps(data_json)
+
+
 
 @app.route("/dataForPlot")
 def getting_data_for_graph():
@@ -199,7 +196,6 @@ def getting_data_for_graph():
         myresult = mycursor.fetchall()
         data_json = [{'day': d[0].strftime("%d %B %Y") if d[0] else "No Data", 'calories': float(d[1])} for d in myresult]
         return json.dumps(data_json)
-
 
 
 @app.route('/apihome')
